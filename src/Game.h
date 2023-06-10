@@ -13,7 +13,7 @@ class Game
 {
 public:
 	// Constructor
-	Game(SDL_Handler* handler);
+	Game(SDL_Handler* handler, char playerSideChar = 'W');
 
     // Destructor
     ~Game();
@@ -39,6 +39,7 @@ public:
     // undos the renderPossibleMoves function
     void UndoRenderPossibleMove(Piece* piece);
 
+    Piece::Team playerSide;
 private: 
 	// 2D Field array, every Position has got a PIece::Team and a piece
 	Piece* m_field[8][8];

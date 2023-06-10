@@ -2,7 +2,7 @@
 #include <iostream>
 #include <list>
 
-Pawn::Pawn(Team team, Point pos, SDL_Handler* handler)
+Pawn::Pawn(Team team, Point pos, SDL_Handler* handler, Team playerTeam)
 	:Piece(team, pos, handler, PAWN), m_enPassant(std::pair<bool, int>(false, 0))
 {
 	std::string filename;
@@ -17,7 +17,7 @@ Pawn::Pawn(Team team, Point pos, SDL_Handler* handler)
 	m_handler = handler;
 	m_texture = handler->loadImage(filename);
 
-	if (team == BLACK)
+	if (team == playerTeam)
 	{
 		moveDirection = -1;
 	}

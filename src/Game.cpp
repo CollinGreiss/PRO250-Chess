@@ -1,81 +1,102 @@
 #include "Game.h"
+#include "Piece.h"
 #include <iostream>
 
-Game::Game(SDL_Handler* handler)
-       :pl1(new Pawn(Piece::WHITE, Point{ 0, 1 }, handler)),
-        pl2(new Pawn(Piece::WHITE, Point{ 1, 1 }, handler)),
-        pl3(new Pawn(Piece::WHITE, Point{ 2, 1 }, handler)),
-        pl4(new Pawn(Piece::WHITE, Point{ 3, 1 }, handler)),
-        pl5(new Pawn(Piece::WHITE, Point{ 4, 1 }, handler)),
-        pl6(new Pawn(Piece::WHITE, Point{ 5, 1 }, handler)),
-        pl7(new Pawn(Piece::WHITE, Point{ 6, 1 }, handler)),
-        pl8(new Pawn(Piece::WHITE, Point{ 7, 1 }, handler)),
-        pb1(new Pawn(Piece::BLACK, Point{ 0, 6 }, handler)),
-        pb2(new Pawn(Piece::BLACK, Point{ 1, 6 }, handler)),
-        pb3(new Pawn(Piece::BLACK, Point{ 2, 6 }, handler)),
-        pb4(new Pawn(Piece::BLACK, Point{ 3, 6 }, handler)),
-        pb5(new Pawn(Piece::BLACK, Point{ 4, 6 }, handler)),
-        pb6(new Pawn(Piece::BLACK, Point{ 5, 6 }, handler)),
-        pb7(new Pawn(Piece::BLACK, Point{ 6, 6 }, handler)),
-        pb8(new Pawn(Piece::BLACK, Point{ 7, 6 }, handler)),
-        rb1(new Rook(Piece::BLACK, Point{ 0, 7 }, handler)),
-        rb2(new Rook(Piece::BLACK, Point{ 7, 7 }, handler)),
-        rl1(new Rook(Piece::WHITE, Point{ 0, 0 }, handler)),
-        rl2(new Rook(Piece::WHITE, Point{ 7, 0 }, handler)),
-        nb1(new Knight(Piece::BLACK, Point{ 1, 7 }, handler)),
-        nb2(new Knight(Piece::BLACK, Point{ 6, 7 }, handler)),
-        nl1(new Knight(Piece::WHITE, Point{ 1, 0 }, handler)),
-        nl2(new Knight(Piece::WHITE, Point{ 6, 0 }, handler)),
-        bb1(new Bishop(Piece::BLACK, Point{ 2, 7 }, handler)),
-        bb2(new Bishop(Piece::BLACK, Point{ 5, 7 }, handler)),
-        bl1(new Bishop(Piece::WHITE, Point{ 2, 0 }, handler)),
-        bl2(new Bishop(Piece::WHITE, Point{ 5, 0 }, handler)),
-        kb1(new King(Piece::BLACK, Point{ 3, 7 }, handler)),
-        kl1(new King(Piece::WHITE, Point{ 3, 0 }, handler)),
-        qb1(new Queen(Piece::BLACK, Point{ 4, 7 }, handler)),
-        ql1(new Queen(Piece::WHITE, Point{ 4, 0 }, handler)),
-        m_turn(Piece::WHITE),
-        m_handler(handler),
-        m_checkEnPassant(true)
+Game::Game(SDL_Handler* handler, char playerSideChar)
 {
-    m_field[0][7] = rb1;
-    m_field[7][7] = rb2;
-    m_field[0][0] = rl1;
-    m_field[7][0] = rl2;
+    if (playerSideChar == 'B')  playerSide = Piece::Team::BLACK;
+    else playerSide = Piece::Team::WHITE;
 
-    m_field[1][7] = nb1;
-    m_field[6][7] = nb2;
-    m_field[1][0] = nl1;
-    m_field[6][0] = nl2;
+    int blackPieceYPos = 0;
+    int blackPawnYPos = 1;
 
-    m_field[2][7] = bb1;
-    m_field[5][7] = bb2;
-    m_field[2][0] = bl1;
-    m_field[5][0] = bl2;
+    int whitePieceYPos = 7;
+    int whitePawnYPos = 6; 
+   
+    if (playerSide == Piece::Team::BLACK) // Check, what pieces color should be first depending on player choice
+    {
+        whitePieceYPos = 0;
+        whitePawnYPos = 1;
 
-    m_field[3][7] = kb1;
-    m_field[3][0] = kl1;
+        blackPieceYPos = 7;
+        blackPawnYPos = 6;
+    }
 
-    m_field[4][7] = qb1;
-    m_field[4][0] = ql1;
+    pl1 = new Pawn(Piece::WHITE, Point{ 0, whitePawnYPos }, handler, playerSide);
+    pl2 = new Pawn(Piece::WHITE, Point{ 1, whitePawnYPos }, handler, playerSide);
+    pl3 = new Pawn(Piece::WHITE, Point{ 2, whitePawnYPos }, handler, playerSide);
+    pl4 = new Pawn(Piece::WHITE, Point{ 3, whitePawnYPos }, handler, playerSide);
+    pl5 = new Pawn(Piece::WHITE, Point{ 4, whitePawnYPos }, handler, playerSide);
+    pl6 = new Pawn(Piece::WHITE, Point{ 5, whitePawnYPos }, handler, playerSide);
+    pl7 = new Pawn(Piece::WHITE, Point{ 6, whitePawnYPos }, handler, playerSide);
+    pl8 = new Pawn(Piece::WHITE, Point{ 7, whitePawnYPos }, handler, playerSide);
+    pb1 = new Pawn(Piece::BLACK, Point{ 0, blackPawnYPos }, handler, playerSide);
+    pb2 = new Pawn(Piece::BLACK, Point{ 1, blackPawnYPos }, handler, playerSide);
+    pb3 = new Pawn(Piece::BLACK, Point{ 2, blackPawnYPos }, handler, playerSide);
+    pb4 = new Pawn(Piece::BLACK, Point{ 3, blackPawnYPos }, handler, playerSide);
+    pb5 = new Pawn(Piece::BLACK, Point{ 4, blackPawnYPos }, handler, playerSide);
+    pb6 = new Pawn(Piece::BLACK, Point{ 5, blackPawnYPos }, handler, playerSide);
+    pb7 = new Pawn(Piece::BLACK, Point{ 6, blackPawnYPos }, handler, playerSide);
+    pb8 = new Pawn(Piece::BLACK, Point{ 7, blackPawnYPos }, handler, playerSide);
+    rb1 = new Rook(Piece::BLACK, Point{ 0, blackPieceYPos }, handler);
+    rb2 = new Rook(Piece::BLACK, Point{ 7, blackPieceYPos }, handler);
+    rl1 = new Rook(Piece::WHITE, Point{ 0, whitePieceYPos }, handler);
+    rl2 = new Rook(Piece::WHITE, Point{ 7, whitePieceYPos }, handler);
+    nb1 = new Knight(Piece::BLACK, Point{ 1, blackPieceYPos }, handler);
+    nb2 = new Knight(Piece::BLACK, Point{ 6, blackPieceYPos }, handler);
+    nl1 = new Knight(Piece::WHITE, Point{ 1, whitePieceYPos }, handler);
+    nl2 = new Knight(Piece::WHITE, Point{ 6, whitePieceYPos }, handler);
+    bb1 = new Bishop(Piece::BLACK, Point{ 2, blackPieceYPos }, handler);
+    bb2 = new Bishop(Piece::BLACK, Point{ 5, blackPieceYPos }, handler);
+    bl1 = new Bishop(Piece::WHITE, Point{ 2, whitePieceYPos }, handler);
+    bl2 = new Bishop(Piece::WHITE, Point{ 5, whitePieceYPos }, handler);
+    kb1 = new King(Piece::BLACK, Point{ 3, blackPieceYPos }, handler);
+    kl1 = new King(Piece::WHITE, Point{ 3, whitePieceYPos }, handler);
+    qb1 = new Queen(Piece::BLACK, Point{ 4, blackPieceYPos }, handler);
+    ql1 = new Queen(Piece::WHITE, Point{ 4, whitePieceYPos }, handler);
 
-    m_field[0][1] = pl1;
-    m_field[1][1] = pl2;
-    m_field[2][1] = pl3;
-    m_field[3][1] = pl4;
-    m_field[4][1] = pl5;
-    m_field[5][1] = pl6;
-    m_field[6][1] = pl7;
-    m_field[7][1] = pl8;
+    m_turn = Piece::WHITE;
+    m_handler = handler;
+    m_checkEnPassant = true;
 
-    m_field[0][6] = pb1;
-    m_field[1][6] = pb2;
-    m_field[2][6] = pb3;
-    m_field[3][6] = pb4;
-    m_field[4][6] = pb5;
-    m_field[5][6] = pb6;
-    m_field[6][6] = pb7;
-    m_field[7][6] = pb8;
+    m_field[rb1->getPos().xCoord][rb1->getPos().yCoord] = rb1;
+    m_field[rb2->getPos().xCoord][rb2->getPos().yCoord] = rb2;
+    m_field[rl1->getPos().xCoord][rl1->getPos().yCoord] = rl1;
+    m_field[rl2->getPos().xCoord][rl2->getPos().yCoord] = rl2;
+
+    m_field[nb1->getPos().xCoord][nb1->getPos().yCoord] = nb1;
+    m_field[nb2->getPos().xCoord][nb2->getPos().yCoord] = nb2;
+    m_field[nl1->getPos().xCoord][nl1->getPos().yCoord] = nl1;
+    m_field[nl2->getPos().xCoord][nl2->getPos().yCoord] = nl2;
+
+    m_field[bb1->getPos().xCoord][bb1->getPos().yCoord] = bb1;
+    m_field[bb2->getPos().xCoord][bb2->getPos().yCoord] = bb2;
+    m_field[bl1->getPos().xCoord][bl1->getPos().yCoord] = bl1;
+    m_field[bl2->getPos().xCoord][bl2->getPos().yCoord] = bl2;
+
+    m_field[kb1->getPos().xCoord][kb1->getPos().yCoord] = kb1;
+    m_field[kl1->getPos().xCoord][kl1->getPos().yCoord] = kl1;
+
+    m_field[qb1->getPos().xCoord][qb1->getPos().yCoord] = qb1;
+    m_field[ql1->getPos().xCoord][ql1->getPos().yCoord] = ql1;
+    //In for cycle
+    m_field[pl1->getPos().xCoord][pl1->getPos().yCoord] = pl1;
+    m_field[pl2->getPos().xCoord][pl2->getPos().yCoord] = pl2;
+    m_field[pl3->getPos().xCoord][pl3->getPos().yCoord] = pl3;
+    m_field[pl4->getPos().xCoord][pl4->getPos().yCoord] = pl4;
+    m_field[pl5->getPos().xCoord][pl5->getPos().yCoord] = pl5;
+    m_field[pl6->getPos().xCoord][pl6->getPos().yCoord] = pl6;
+    m_field[pl7->getPos().xCoord][pl7->getPos().yCoord] = pl7;
+    m_field[pl8->getPos().xCoord][pl8->getPos().yCoord] = pl8;
+
+    m_field[pb1->getPos().xCoord][pb1->getPos().yCoord] = pb1;
+    m_field[pb2->getPos().xCoord][pb2->getPos().yCoord] = pb2;
+    m_field[pb3->getPos().xCoord][pb3->getPos().yCoord] = pb3;
+    m_field[pb4->getPos().xCoord][pb4->getPos().yCoord] = pb4;
+    m_field[pb5->getPos().xCoord][pb5->getPos().yCoord] = pb5;
+    m_field[pb6->getPos().xCoord][pb6->getPos().yCoord] = pb6;
+    m_field[pb7->getPos().xCoord][pb7->getPos().yCoord] = pb7;
+    m_field[pb8->getPos().xCoord][pb8->getPos().yCoord] = pb8;
 
     for (int i = 2; i < 6; i++)
     {

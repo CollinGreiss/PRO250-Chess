@@ -3,10 +3,10 @@
 
 int main(int argc, char* args[])
 {
-	int taShaAga;
-	std::cout << "Hello epta! Gimme your dick size" << std::endl;
-	std::cin >> taShaAga;
+	char playerSide;
+	std::cout << "Choose your color (W - white, B - black)" << std::endl;
+	std::cin >> playerSide;
 
-	MainLoop::Run();
+	MainLoop::Run(playerSide);
 	return 0;
 }

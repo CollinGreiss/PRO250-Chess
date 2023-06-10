@@ -6,7 +6,7 @@ class Pawn :
 {
 public:
     // constructor
-    Pawn(Team team, Point pos, SDL_Handler* handler);
+    Pawn(Team team, Point pos, SDL_Handler* handler, Team playerTeam = Team::WHITE);
 
     // prints name of piece
     void sayMyName();

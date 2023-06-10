@@ -7,13 +7,13 @@
 #include <stdio.h>
 #include <memory>
 
-void MainLoop::Run()
+void MainLoop::Run(char playerSide)
 {
 	SDL_Handler handler;
 
 	handler.renderBackground();
 
-	std::unique_ptr<Game> game = std::make_unique<Game>(&handler);
+	std::unique_ptr<Game> game = std::make_unique<Game>(&handler, playerSide);
 	bool quit = false;
 
 	int xStart = -1;
