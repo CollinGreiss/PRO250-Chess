@@ -184,12 +184,12 @@ void Game::normal(int xStart, int yStart, int xEnd, int yEnd)
 void Game::EnPassant(int xStart, int yStart, int xEnd, int yEnd)
 {
     Pawn* pawn_start = static_cast<Pawn*>(m_field[xStart][yStart]);
-    m_field[xEnd][yEnd - pawn_start->m_dy] = nullptr;
+    m_field[xEnd][yEnd - pawn_start->moveDirection] = nullptr;
     m_field[xEnd][yEnd] = GetFieldPos(xStart, yStart);
     m_field[xEnd][yEnd]->m_hasMoved = true;
     m_field[xStart][yStart] = nullptr;
     m_handler->undoPieceRender(xStart, yStart);
-    m_handler->undoPieceRender(xEnd, yEnd - pawn_start->m_dy);
+    m_handler->undoPieceRender(xEnd, yEnd - pawn_start->moveDirection);
     m_field[xEnd][yEnd]->setPosition(Point{ xEnd, yEnd });
     m_field[xEnd][yEnd]->render();
 }

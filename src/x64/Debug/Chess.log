@@ -1,14 +1,2 @@
-﻿  Bishop.cpp
-  Game.cpp
-  King.cpp
-  Knight.cpp
-  Main.cpp
-  MainLoop.cpp
-  Misc.cpp
-  Pawn.cpp
-  Piece.cpp
-  Queen.cpp
-  Rook.cpp
-  SDL_Handler.cpp
-  Generating Code...
+﻿  Main.cpp
   Chess.vcxproj -> D:\Projects\C++\Chess\x64\Debug\Chess.exe

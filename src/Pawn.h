@@ -15,7 +15,7 @@ public:
     void calcPossibleMoves(Piece* field[8][8], bool checkCheck);
 
     // direction the pawn moves
-    int m_dy;
+    int moveDirection;
 
     // getter m_enPassant
     std::pair<bool, int> getEnPassant() { return m_enPassant; };

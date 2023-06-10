@@ -19,11 +19,11 @@ Pawn::Pawn(Team team, Point pos, SDL_Handler* handler)
 
 	if (team == BLACK)
 	{
-		m_dy = -1;
+		moveDirection = -1;
 	}
 	else
 	{
-		m_dy = 1;
+		moveDirection = 1;
 	}
 
 	render();
@@ -45,12 +45,12 @@ void Pawn::calcPossibleMoves(Piece* field[8][8], bool checkCheck)
 {
 	std::vector<PossibleMove> moves;
 
-	if (m_pos.yCoord + m_dy == 0 || m_pos.yCoord + m_dy == 7)
+	if (m_pos.yCoord + moveDirection == 0 || m_pos.yCoord + moveDirection == 7)
 	{
-		if (field[m_pos.xCoord][m_pos.yCoord + m_dy] == nullptr)
+		if (field[m_pos.xCoord][m_pos.yCoord + moveDirection] == nullptr)
 		{
 			moves = pushMove(moves,
-				PossibleMove{ m_pos.xCoord, m_pos.yCoord + m_dy, MoveType::NEWPIECE },
+				PossibleMove{ m_pos.xCoord, m_pos.yCoord + moveDirection, MoveType::NEWPIECE },
 				getOwnKing(field),
 				field,
 				checkCheck);
@@ -58,22 +58,22 @@ void Pawn::calcPossibleMoves(Piece* field[8][8], bool checkCheck)
 	}
 	else
 	{
-		if (field[m_pos.xCoord][m_pos.yCoord + m_dy] == nullptr)
+		if (field[m_pos.xCoord][m_pos.yCoord + moveDirection] == nullptr)
 		{
 			moves = pushMove(moves,
-				PossibleMove{ m_pos.xCoord, m_pos.yCoord + m_dy, MoveType::NORMAL },
+				PossibleMove{ m_pos.xCoord, m_pos.yCoord + moveDirection, MoveType::NORMAL },
 				getOwnKing(field),
 				field,
 				checkCheck);
 		}
 	}
 
-	if ((m_pos.yCoord + 2 * m_dy >= 0) && (m_pos.yCoord + 2 * m_dy <= 7))
+	if ((m_pos.yCoord + 2 * moveDirection >= 0) && (m_pos.yCoord + 2 * moveDirection <= 7))
 	{
-		if (field[m_pos.xCoord][m_pos.yCoord + 2 * m_dy] == nullptr && !m_hasMoved)
+		if (field[m_pos.xCoord][m_pos.yCoord + 2 * moveDirection] == nullptr && !m_hasMoved)
 		{
 			moves = pushMove(moves,
-				PossibleMove{ m_pos.xCoord, m_pos.yCoord + 2 * m_dy, MoveType::NORMAL },
+				PossibleMove{ m_pos.xCoord, m_pos.yCoord + 2 * moveDirection, MoveType::NORMAL },
 				getOwnKing(field),
 				field,
 				checkCheck);
@@ -82,14 +82,14 @@ void Pawn::calcPossibleMoves(Piece* field[8][8], bool checkCheck)
 
 	if (m_pos.xCoord + 1 <= 7)
 	{
-		if (field[m_pos.xCoord + 1][m_pos.yCoord + m_dy] != nullptr)
+		if (field[m_pos.xCoord + 1][m_pos.yCoord + moveDirection] != nullptr)
 		{
-			if (field[m_pos.xCoord + 1][m_pos.yCoord + m_dy]->getTeam() != m_team)
+			if (field[m_pos.xCoord + 1][m_pos.yCoord + moveDirection]->getTeam() != m_team)
 			{
-				if (m_pos.yCoord + m_dy == 0 || m_pos.yCoord + m_dy == 7)
+				if (m_pos.yCoord + moveDirection == 0 || m_pos.yCoord + moveDirection == 7)
 				{
 					moves = pushMove(moves,
-						PossibleMove{ m_pos.xCoord + 1, m_pos.yCoord + m_dy, MoveType::NEWPIECE },
+						PossibleMove{ m_pos.xCoord + 1, m_pos.yCoord + moveDirection, MoveType::NEWPIECE },
 						getOwnKing(field),
 						field,
 						checkCheck);
@@ -97,7 +97,7 @@ void Pawn::calcPossibleMoves(Piece* field[8][8], bool checkCheck)
 				else
 				{
 					moves = pushMove(moves,
-						PossibleMove{ m_pos.xCoord + 1, m_pos.yCoord + m_dy, MoveType::NORMAL },
+						PossibleMove{ m_pos.xCoord + 1, m_pos.yCoord + moveDirection, MoveType::NORMAL },
 						getOwnKing(field),
 						field,
 						checkCheck);
@@ -107,14 +107,14 @@ void Pawn::calcPossibleMoves(Piece* field[8][8], bool checkCheck)
 	}
 	if (m_pos.xCoord - 1 >= 0)
 	{
-		if (field[m_pos.xCoord - 1][m_pos.yCoord + m_dy] != nullptr)
+		if (field[m_pos.xCoord - 1][m_pos.yCoord + moveDirection] != nullptr)
 		{
-			if (field[m_pos.xCoord - 1][m_pos.yCoord + m_dy]->getTeam() != m_team)
+			if (field[m_pos.xCoord - 1][m_pos.yCoord + moveDirection]->getTeam() != m_team)
 			{
-				if (m_pos.yCoord + m_dy == 0 || m_pos.yCoord + m_dy == 7)
+				if (m_pos.yCoord + moveDirection == 0 || m_pos.yCoord + moveDirection == 7)
 				{
 					moves = pushMove(moves,
-						PossibleMove{ m_pos.xCoord - 1, m_pos.yCoord + m_dy, MoveType::NEWPIECE },
+						PossibleMove{ m_pos.xCoord - 1, m_pos.yCoord + moveDirection, MoveType::NEWPIECE },
 						getOwnKing(field),
 						field,
 						checkCheck);
@@ -122,7 +122,7 @@ void Pawn::calcPossibleMoves(Piece* field[8][8], bool checkCheck)
 				else
 				{
 					moves = pushMove(moves,
-						PossibleMove{ m_pos.xCoord - 1, m_pos.yCoord + m_dy, MoveType::NORMAL },
+						PossibleMove{ m_pos.xCoord - 1, m_pos.yCoord + moveDirection, MoveType::NORMAL },
 						getOwnKing(field),
 						field,
 						checkCheck);
@@ -134,7 +134,7 @@ void Pawn::calcPossibleMoves(Piece* field[8][8], bool checkCheck)
 	if (m_enPassant == std::pair<bool, int>(true, -1))
 	{
 		moves = pushMove(moves,
-			PossibleMove{ m_pos.xCoord + 1, m_pos.yCoord + m_dy, MoveType::ENPASSANT },
+			PossibleMove{ m_pos.xCoord + 1, m_pos.yCoord + moveDirection, MoveType::ENPASSANT },
 			getOwnKing(field),
 			field,
 			checkCheck);
@@ -142,7 +142,7 @@ void Pawn::calcPossibleMoves(Piece* field[8][8], bool checkCheck)
 	if (m_enPassant == std::pair<bool, int>(true, 1))
 	{
 		moves = pushMove(moves,
-			PossibleMove{ m_pos.xCoord - 1, m_pos.yCoord + m_dy, MoveType::ENPASSANT },
+			PossibleMove{ m_pos.xCoord - 1, m_pos.yCoord + moveDirection, MoveType::ENPASSANT },
 			getOwnKing(field),
 			field,
 			checkCheck);
