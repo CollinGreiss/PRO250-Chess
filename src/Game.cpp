@@ -53,15 +53,15 @@ Game::Game(SDL_Handler* handler, char playerSideChar)
 
     if (playerSide == Piece::Team::BLACK)
     {
-        kb1 = new King(Piece::BLACK, Point{ 3, blackPieceYPos }, handler);
-        kl1 = new King(Piece::WHITE, Point{ 3, whitePieceYPos }, handler);
+        kb1 = new King(Piece::BLACK, Point{ 3, blackPieceYPos }, handler, playerSide);
+        kl1 = new King(Piece::WHITE, Point{ 3, whitePieceYPos }, handler, playerSide);
         qb1 = new Queen(Piece::BLACK, Point{ 4, blackPieceYPos }, handler);
         ql1 = new Queen(Piece::WHITE, Point{ 4, whitePieceYPos }, handler);
     }
     else
     {
-        kb1 = new King(Piece::BLACK, Point{ 4, blackPieceYPos }, handler);
-        kl1 = new King(Piece::WHITE, Point{ 4, whitePieceYPos }, handler);
+        kb1 = new King(Piece::BLACK, Point{ 4, blackPieceYPos }, handler, playerSide);
+        kl1 = new King(Piece::WHITE, Point{ 4, whitePieceYPos }, handler, playerSide);
         qb1 = new Queen(Piece::BLACK, Point{ 3, blackPieceYPos }, handler);
         ql1 = new Queen(Piece::WHITE, Point{ 3, whitePieceYPos }, handler);
     }
@@ -344,38 +344,54 @@ void Game::Exchange(int xStart, int yStart, int xEnd, int yEnd)
 }
 
 
-void Game::Castles(int xStart, int yStart, int xEnd, int yEnd)
+void Game::Castles(int xStart, int yStart, int xEnd, int yEnd) //Start - king position, end - rook position
 {
-    if (xEnd == 0)
+    int newRookPosX;
+    int newKingPosX;
+    if (xEnd == 0) //Long castling for white, and short for black side
     {
-        m_field[2][yEnd] = m_field[4][yEnd];
-        m_field[3][yEnd] = m_field[0][yEnd];
-        m_field[2][yEnd]->m_hasMoved = true;
-        m_field[3][yEnd]->m_hasMoved = true;
-        m_field[2][yEnd]->setPosition(Point{ 2, yEnd });
-        m_field[3][yEnd]->setPosition(Point{ 3, yEnd });
-        m_field[4][yEnd] = nullptr;
-        m_field[0][yEnd] = nullptr;
-        m_handler->undoPieceRender(4, yEnd);
-        m_handler->undoPieceRender(0, yEnd);
-        m_field[2][yEnd]->render();
-        m_field[3][yEnd]->render();
+        if (playerSide == Piece::Team::WHITE)
+        {
+            newKingPosX = 2;
+            newRookPosX = 3;
+        }
+        else
+        {
+            newKingPosX = 1;
+            newRookPosX = 2;
+        }
     }
     else
     {
-        m_field[6][yEnd] = m_field[4][yEnd];
-        m_field[5][yEnd] = m_field[7][yEnd];
-        m_field[6][yEnd]->m_hasMoved = true;
-        m_field[5][yEnd]->m_hasMoved = true;
-        m_field[6][yEnd]->setPosition(Point{ 6, yEnd });
-        m_field[5][yEnd]->setPosition(Point{ 5, yEnd });
-        m_field[4][yEnd] = nullptr;
-        m_field[7][yEnd] = nullptr;
-        m_handler->undoPieceRender(4, yEnd);
-        m_handler->undoPieceRender(7, yEnd);
-        m_field[6][yEnd]->render();
-        m_field[5][yEnd]->render();
+        if (playerSide == Piece::Team::WHITE)
+        {
+            newKingPosX = 6;
+            newRookPosX = 5;
+        }
+        else
+        {
+            newKingPosX = 5;
+            newRookPosX = 4;
+        }
     }
+
+    m_field[newKingPosX][yEnd] = m_field[xStart][yEnd];
+    m_field[newRookPosX][yEnd] = m_field[xEnd][yEnd];
+
+    m_field[newKingPosX][yEnd]->m_hasMoved = true;
+    m_field[newRookPosX][yEnd]->m_hasMoved = true;
+
+    m_field[newKingPosX][yEnd]->setPosition(Point{ newKingPosX, yEnd });
+    m_field[newRookPosX][yEnd]->setPosition(Point{ newRookPosX, yEnd });
+
+    m_field[xStart][yEnd] = nullptr;
+    m_field[xEnd][yEnd] = nullptr;
+
+    m_handler->undoPieceRender(xStart, yEnd);
+    m_handler->undoPieceRender(xEnd, yEnd);
+
+    m_field[newKingPosX][yEnd]->render();
+    m_field[newRookPosX][yEnd]->render();
 }
 
 void Game::GameState()

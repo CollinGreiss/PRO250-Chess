@@ -6,7 +6,7 @@ class King :
     public Piece
 {
 public:
-    King(Team team, Point pos, SDL_Handler* handler);
+    King(Team team, Point pos, SDL_Handler* handler, Team playerTeam = Team::WHITE);
 
     // calls type and color to debug
     void sayMyName();
@@ -21,6 +21,8 @@ public:
     bool getCheck() { return m_check; };
 
 private:
+
+    Team playerTeam;
 
     // true, if the king is on any of the other teams movelist's
     bool m_check;

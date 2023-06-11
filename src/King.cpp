@@ -3,7 +3,7 @@
 #include <iostream>
 #include <stdlib.h>
 
-King::King(Team team, Point pos, SDL_Handler* handler)
+King::King(Team team, Point pos, SDL_Handler* handler, Team playerTeam)
 	:Piece(team, pos, handler, KING), m_check(false)
 {
 	std::string filename;
@@ -18,6 +18,7 @@ King::King(Team team, Point pos, SDL_Handler* handler)
 	m_handler = handler;
 	m_texture = handler->loadImage(filename);
 
+	this->playerTeam = playerTeam;
 	render();
 }
 
@@ -68,7 +69,7 @@ void King::calcPossibleMoves(Piece* field[8][8], bool checkCheck)
 		}
 	}
 
-	if (!m_hasMoved)
+	if (!m_hasMoved) // Check for castle
 	{
 		for (int i = 0; i <= 7; i += 7)
 		{
@@ -85,12 +86,25 @@ void King::calcPossibleMoves(Piece* field[8][8], bool checkCheck)
 							a = 1;
 							b = 2;
 							c = 3;
+							if (playerTeam == Team::BLACK)
+							{
+								a = 1;
+								b = 2;
+								c = 2;
+							}
 						}
 						else
 						{
 							a = 5;
 							b = 6;
 							c = 6;
+
+							if (playerTeam == Team::BLACK)
+							{
+								a = 4;
+								b = 5;
+								c = 6;
+							}
 						}
 						if (field[a][j] == nullptr && field[b][j] == nullptr && field[c][j] == nullptr)
 						{
