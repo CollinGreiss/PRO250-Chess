@@ -50,10 +50,21 @@ Game::Game(SDL_Handler* handler, char playerSideChar)
     bb2 = new Bishop(Piece::BLACK, Point{ 5, blackPieceYPos }, handler);
     bl1 = new Bishop(Piece::WHITE, Point{ 2, whitePieceYPos }, handler);
     bl2 = new Bishop(Piece::WHITE, Point{ 5, whitePieceYPos }, handler);
-    kb1 = new King(Piece::BLACK, Point{ 3, blackPieceYPos }, handler);
-    kl1 = new King(Piece::WHITE, Point{ 3, whitePieceYPos }, handler);
-    qb1 = new Queen(Piece::BLACK, Point{ 4, blackPieceYPos }, handler);
-    ql1 = new Queen(Piece::WHITE, Point{ 4, whitePieceYPos }, handler);
+
+    if (playerSide == Piece::Team::BLACK)
+    {
+        kb1 = new King(Piece::BLACK, Point{ 3, blackPieceYPos }, handler);
+        kl1 = new King(Piece::WHITE, Point{ 3, whitePieceYPos }, handler);
+        qb1 = new Queen(Piece::BLACK, Point{ 4, blackPieceYPos }, handler);
+        ql1 = new Queen(Piece::WHITE, Point{ 4, whitePieceYPos }, handler);
+    }
+    else
+    {
+        kb1 = new King(Piece::BLACK, Point{ 4, blackPieceYPos }, handler);
+        kl1 = new King(Piece::WHITE, Point{ 4, whitePieceYPos }, handler);
+        qb1 = new Queen(Piece::BLACK, Point{ 3, blackPieceYPos }, handler);
+        ql1 = new Queen(Piece::WHITE, Point{ 3, whitePieceYPos }, handler);
+    }
 
     m_turn = Piece::WHITE;
     m_handler = handler;
