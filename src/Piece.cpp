@@ -92,7 +92,7 @@ Piece::~Piece()
 
 void Piece::render()
 {
-	SDL_Rect src = {0, 0, 60, 60};
+	SDL_Rect src = {0, 0, m_handler->CELL_WIDTH, m_handler->CELL_WIDTH };
 	if (m_handler == nullptr)
 	{
 		sayMyName();
