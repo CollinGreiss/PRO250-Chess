@@ -12,7 +12,7 @@ Game::Game(SDL_Handler* handler, char playerSideChar)
 
     int whitePieceYPos = 7;
     int whitePawnYPos = 6; 
-   
+
     if (playerSide == Piece::Team::BLACK) // Check, what pieces color should be first depending on player choice
     {
         whitePieceYPos = 0;

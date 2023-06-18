@@ -14,7 +14,6 @@ class Game
 public:
 	// Constructor
 	Game(SDL_Handler* handler, char playerSideChar = 'W');
-
     // Destructor
     ~Game();
 

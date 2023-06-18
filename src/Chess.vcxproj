@@ -60,6 +60,11 @@
     <Image Include="Bilder\Chess_rdt60.png" />
     <Image Include="Bilder\Chess_rlt60.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ChessAIFinal\ChessAI\ChessAI\ChessAI.vcxproj">
+      <Project>{580385c8-b167-33b5-a16a-356a1f32e342}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
