@@ -40,9 +40,15 @@
     <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\tree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AI_API.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="D:\Projects\C++\ChessAI\chess-ai-master\src\main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AI_API.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

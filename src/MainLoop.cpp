@@ -6,6 +6,8 @@
 #include <SDL.h>
 #include <stdio.h>
 #include <memory>
+#include "../ChessAI/ChessAI/AI_API.h"
+#include "../ChessAI/ChessAI/AI_API.cpp"
 
 void MainLoop::Run(char playerSide)
 {
@@ -22,6 +24,9 @@ void MainLoop::Run(char playerSide)
 	int yEnd = -1;
 	Piece* clickedOn = nullptr;
 
+	AI_API* ChessAI = new AI_API();
+	//std::unique_ptr<AI_API> ChessAI = std::make_unique<AI_API>();
+	ChessAI->GetUserInput();
 	while (!quit)
 	{
 		while (SDL_WaitEvent(&handler.m_event))

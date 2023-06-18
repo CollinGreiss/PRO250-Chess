@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Chess", "src\Chess.vcxproj", "{B1384727-1460-4AB0-B5A8-EA94D8C42B00}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChessAI", "..\ChessAIFinal\ChessAI\ChessAI\ChessAI.vcxproj", "{580385C8-B167-33B5-A16A-356A1F32E342}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChessAI", "ChessAI\ChessAI\ChessAI.vcxproj", "{580385C8-B167-33B5-A16A-356A1F32E342}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -305,12 +305,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AI_API.cpp" />
     <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\bishop.cpp" />
     <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\evaluate.cpp" />
     <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\execute.cpp" />
     <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\king.cpp" />
     <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\knight.cpp" />
     <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\main.cpp" />
+    <ClInclude Include="AI_API.h" />
     <ClInclude Include="D:\Projects\C++\ChessAI\chess-ai-master\src\main.h" />
     <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\minimax.cpp" />
     <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\move.cpp" />
