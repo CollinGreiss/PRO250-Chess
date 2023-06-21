@@ -1,4 +1,5 @@
 #include "AI_API.h"
+#include "main.h"
 #include <iostream>
 
 AI_API::AI_API()
@@ -9,7 +10,12 @@ AI_API::~AI_API()
 {
 }
 
-void AI_API::GetUserInput()
+void AI_API::GetUserInput(std::string userMove)
 {
-	std::cout << "Hello, I'm API" << std::endl;
+
+}
+
+std::string AI_API::CalcAIMove()
+{
+	return std::string();
 }

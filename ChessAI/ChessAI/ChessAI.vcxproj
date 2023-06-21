@@ -59,7 +59,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Projects\C++\ChessAIBuild\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Projects\C++\Chess\ChessAI\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ChessAI.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ChessAI</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
@@ -117,8 +117,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/Projects/C++/ChessAIBuild/Debug/ChessAI.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/Projects/C++/ChessAIBuild/Debug/ChessAI.pdb</ProgramDataBaseFile>
+      <ImportLibrary>$(ProjectDir)Debug/ChessAI.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Projects/C++/Chess/ChessAI/Debug/ChessAI.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -306,29 +306,21 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AI_API.cpp" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\bishop.cpp" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\evaluate.cpp" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\execute.cpp" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\king.cpp" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\knight.cpp" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\main.cpp" />
+    <ClCompile Include="bishop.cpp" />
+    <ClCompile Include="evaluate.cpp" />
+    <ClCompile Include="execute.cpp" />
+    <ClCompile Include="king.cpp" />
+    <ClCompile Include="knight.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClInclude Include="AI_API.h" />
-    <ClInclude Include="D:\Projects\C++\ChessAI\chess-ai-master\src\main.h" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\minimax.cpp" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\move.cpp" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\pawn.cpp" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\print.cpp" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\queen.cpp" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\rook.cpp" />
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\tree.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="D:\Projects\C++\ChessAIBuild\ZERO_CHECK.vcxproj">
-      <Project>{4A6FB958-5321-374A-A000-094D238C7866}</Project>
-      <Name>ZERO_CHECK</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </ProjectReference>
+    <ClInclude Include="main.h" />
+    <ClCompile Include="minimax.cpp" />
+    <ClCompile Include="move.cpp" />
+    <ClCompile Include="pawn.cpp" />
+    <ClCompile Include="print.cpp" />
+    <ClCompile Include="queen.cpp" />
+    <ClCompile Include="rook.cpp" />
+    <ClCompile Include="tree.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

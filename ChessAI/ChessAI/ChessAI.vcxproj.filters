@@ -1,43 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\bishop.cpp">
+    <ClCompile Include="bishop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\evaluate.cpp">
+    <ClCompile Include="evaluate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\execute.cpp">
+    <ClCompile Include="execute.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\king.cpp">
+    <ClCompile Include="king.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\knight.cpp">
+    <ClCompile Include="knight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\main.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\minimax.cpp">
+    <ClCompile Include="minimax.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\move.cpp">
+    <ClCompile Include="move.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\pawn.cpp">
+    <ClCompile Include="pawn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\print.cpp">
+    <ClCompile Include="print.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\queen.cpp">
+    <ClCompile Include="queen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\rook.cpp">
+    <ClCompile Include="rook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\Projects\C++\ChessAI\chess-ai-master\src\tree.cpp">
+    <ClCompile Include="tree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AI_API.cpp">
@@ -45,7 +45,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\Projects\C++\ChessAI\chess-ai-master\src\main.h">
+    <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AI_API.h">

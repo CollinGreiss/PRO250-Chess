@@ -2,12 +2,6 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Projects\C++\ChessAIBuild\x64\Debug\ZERO_CHECK</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
-      <FullPath>D:\Projects\C++\ChessAIBuild\Debug\ChessAI.exe</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
       <FullPath>D:\Projects\C++\Chess\x64\Debug\Chess.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>

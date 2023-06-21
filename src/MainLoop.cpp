@@ -24,9 +24,9 @@ void MainLoop::Run(char playerSide)
 	int yEnd = -1;
 	Piece* clickedOn = nullptr;
 
-	AI_API* ChessAI = new AI_API();
-	//std::unique_ptr<AI_API> ChessAI = std::make_unique<AI_API>();
-	ChessAI->GetUserInput();
+	//AI_API* ChessAI = new AI_API();
+	std::unique_ptr<AI_API> ChessAI = std::make_unique<AI_API>();
+
 	while (!quit)
 	{
 		while (SDL_WaitEvent(&handler.m_event))
