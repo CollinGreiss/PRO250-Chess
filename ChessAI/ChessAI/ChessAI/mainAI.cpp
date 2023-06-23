@@ -51,6 +51,7 @@ int main() {
         if (user_input == "q" || user_input == "quit") {
             break;
         }
+
         exec_player_move(root, user_input);
         print_board(root);
 
@@ -91,3 +92,49 @@ int main() {
     }
     return 0;
 }
+
+mainAI::mainAI()
+{
+    root = new tNode;
+    init_materials(root->materials);
+    root->cur_side = 0; // 0 denotes human/player side
+    print_board(root);
+}
+
+mainAI::~mainAI()
+{
+}
+
+void mainAI::GetUserInput(string user_input)
+{
+    exec_player_move(root, user_input);
+}
+
+string mainAI::CalculateAIMove()
+{
+    next_move(root, 0);
+    minimax_alpha_beta(root, best, 0, 0, LOWEST_SCORE, HIGHEST_SCORE);
+    ChangeRootPos();
+
+    return string();
+}
+
+void mainAI::ChangeRootPos()
+{
+    static_evals = 0;
+
+    int a, b;
+    for (a = 0; a < 12; a++) {
+        for (b = 0; b < 12; b++) {
+            root->board[a][b] = best->board[a][b];
+        }
+    }
+    //Here we should check the difference between root and best board, and decide, what changed
+    root->materials = best->materials;
+    root->w_king_pos = best->w_king_pos;
+    root->b_king_pos = best->b_king_pos;
+
+    tree_delete(root);
+    prev_moves.clear();
+}
+

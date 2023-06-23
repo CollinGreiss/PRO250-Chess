@@ -43,6 +43,20 @@ struct tNode {
 };
 typedef tNode* Node;
 
+class mainAI
+{
+public:
+    mainAI();
+    ~mainAI();
+
+    void GetUserInput(string user_input);
+    string CalculateAIMove();
+private:
+
+    void ChangeRootPos();
+    Node root;
+    Node best;
+};
 
 // ==================== BASIC FUNCTIONALITY AND TREE OPERATIONS ====================
 void print_board(Node& root);

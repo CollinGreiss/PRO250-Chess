@@ -6,8 +6,8 @@
 #include <SDL.h>
 #include <stdio.h>
 #include <memory>
-#include "../ChessAI/ChessAI/AI_API.h"
-#include "../ChessAI/ChessAI/AI_API.cpp"
+#include "../ChessAI/ChessAI/ChessAI/AI_API.h"
+#include "../ChessAI/ChessAI/ChessAI/AI_API.cpp"
 
 void MainLoop::Run(char playerSide)
 {
