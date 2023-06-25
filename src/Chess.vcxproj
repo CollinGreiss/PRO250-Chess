@@ -20,23 +20,36 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bishop.cpp" />
+    <ClCompile Include="bishopAI.cpp" />
+    <ClCompile Include="evaluateAI.cpp" />
+    <ClCompile Include="executeAI.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="King.cpp" />
+    <ClCompile Include="kingAI.cpp" />
     <ClCompile Include="Knight.cpp" />
+    <ClCompile Include="knightAI.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="mainAI.cpp" />
     <ClCompile Include="MainLoop.cpp" />
+    <ClCompile Include="minimaxAI.cpp" />
     <ClCompile Include="Misc.cpp" />
+    <ClCompile Include="moveAI.cpp" />
     <ClCompile Include="Pawn.cpp" />
+    <ClCompile Include="pawnAI.cpp" />
     <ClCompile Include="Piece.cpp" />
     <ClCompile Include="Queen.cpp" />
+    <ClCompile Include="queenAI.cpp" />
     <ClCompile Include="Rook.cpp" />
+    <ClCompile Include="rookAI.cpp" />
     <ClCompile Include="SDL_Handler.cpp" />
+    <ClCompile Include="treeAI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bishop.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="King.h" />
     <ClInclude Include="Knight.h" />
+    <ClInclude Include="mainAI.h" />
     <ClInclude Include="MainLoop.h" />
     <ClInclude Include="Misc.h" />
     <ClInclude Include="Pawn.h" />

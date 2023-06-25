@@ -19,6 +19,15 @@
     <Filter Include="Quelldateien\Pieces">
       <UniqueIdentifier>{b019f23b-4f51-4a83-917d-89d3aa307ee6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\ChessAI">
+      <UniqueIdentifier>{2264b062-f2a1-4e3f-b837-794b4a73ade7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\ChessAI">
+      <UniqueIdentifier>{2a6c3a18-b169-4d28-a80d-ecf5725767ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\ChessAI\Functions">
+      <UniqueIdentifier>{c69af1bb-275f-466e-9193-606484f253fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SDL_Handler.cpp">
@@ -57,6 +66,42 @@
     <ClCompile Include="Rook.cpp">
       <Filter>Quelldateien\Pieces</Filter>
     </ClCompile>
+    <ClCompile Include="mainAI.cpp">
+      <Filter>Quelldateien\ChessAI</Filter>
+    </ClCompile>
+    <ClCompile Include="bishopAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="evaluateAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="executeAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="kingAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="knightAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="minimaxAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="moveAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="pawnAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="queenAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="rookAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="treeAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDL_Handler.h">
@@ -91,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="Rook.h">
       <Filter>Headerdateien\Pieces</Filter>
+    </ClInclude>
+    <ClInclude Include="mainAI.h">
+      <Filter>Headerdateien\ChessAI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

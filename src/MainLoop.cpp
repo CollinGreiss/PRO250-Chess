@@ -6,8 +6,8 @@
 #include <SDL.h>
 #include <stdio.h>
 #include <memory>
-#include "../ChessAI/ChessAI/ChessAI/AI_API.h"
-#include "../ChessAI/ChessAI/ChessAI/AI_API.cpp"
+
+#include "mainAI.h"
 
 void MainLoop::Run(char playerSide)
 {
@@ -25,7 +25,7 @@ void MainLoop::Run(char playerSide)
 	Piece* clickedOn = nullptr;
 
 	//AI_API* ChessAI = new AI_API();
-	std::unique_ptr<AI_API> ChessAI = std::make_unique<AI_API>();
+	//std::unique_ptr<AI_API> ChessAI = std::make_unique<AI_API>();
 
 	while (!quit)
 	{
