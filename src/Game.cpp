@@ -4,7 +4,7 @@
 
 Game::Game(SDL_Handler* handler, char playerSideChar)
 {
-    if (playerSideChar == 'B')  playerSide = Piece::Team::BLACK;
+    if (playerSideChar == 'B' || playerSideChar == 'b')  playerSide = Piece::Team::BLACK;
     else playerSide = Piece::Team::WHITE;
 
     int blackPieceYPos = 0;

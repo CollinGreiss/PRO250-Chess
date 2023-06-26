@@ -9,11 +9,11 @@
 
 #include "mainAI.h"
 
-void MainLoop::Run(char playerSide)
+void MainLoop::Run(char playerSide, bool isPlayingVsBot)
 {
 	SDL_Handler handler;
-
 	handler.renderBackground();
+
 
 	std::unique_ptr<Game> game = std::make_unique<Game>(&handler, playerSide);
 	bool quit = false;
@@ -25,8 +25,8 @@ void MainLoop::Run(char playerSide)
 	Piece* clickedOn = nullptr;
 
 	//AI_API* ChessAI = new AI_API();
-	//std::unique_ptr<AI_API> ChessAI = std::make_unique<AI_API>();
-
+	std::unique_ptr<mainAI> ChessAI = std::make_unique<mainAI>();
+	
 	while (!quit)
 	{
 		while (SDL_WaitEvent(&handler.m_event))

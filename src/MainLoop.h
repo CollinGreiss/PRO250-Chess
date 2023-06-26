@@ -3,6 +3,6 @@
 class MainLoop
 {
 public:
-	static void Run(char playerSide = 'W');
+	static void Run(char playerSide = 'W', bool isPlayingVsBot = false);
 };
 
