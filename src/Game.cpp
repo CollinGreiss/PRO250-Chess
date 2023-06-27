@@ -2,6 +2,7 @@
 #include "Piece.h"
 #include <iostream>
 
+char boardXLetters[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
 Game::Game(SDL_Handler* handler, Piece::Team playerTeam)
 {
     playerSide = playerTeam;
@@ -131,7 +132,7 @@ Piece* Game::GetFieldPos(int row, int col)
 }
 
 
-void Game::move(Piece* start, PossibleMove move)
+std::string Game::move(Piece* start, PossibleMove move)
 {
     if (m_checkEnPassant)
     {
@@ -141,6 +142,20 @@ void Game::move(Piece* start, PossibleMove move)
     {
         m_checkEnPassant = true;
     }
+
+    //Moves for black doesn't work right
+    std::cout << "Start.x = " << start->getPos().xCoord << "Start.y = " << start->getPos().yCoord <<
+        "  move.x = " << move.MovePos.xCoord << " move.y = " << move.MovePos.yCoord << std::endl;
+    std::string MoveString;
+
+    char StartXLetter = boardXLetters[start->getPos().xCoord];
+    int StartYPos = playerSide == Piece::Team::WHITE ? (8 - start->getPos().yCoord) : (start->getPos().yCoord + 1);
+
+    char EndXLetter = boardXLetters[move.MovePos.xCoord];
+    int EndYPos = playerSide == Piece::Team::WHITE ? (8 - move.MovePos.yCoord) : (move.MovePos.yCoord + 1);
+
+    MoveString = StartXLetter + std::to_string(StartYPos) + EndXLetter + std::to_string(EndYPos);
+    std::cout << "Move = " << MoveString << std::endl;
 
     switch (move.Move_Type)
     {
@@ -161,6 +176,8 @@ void Game::move(Piece* start, PossibleMove move)
     }
 
     GameState();
+
+    return MoveString;
 }
 
 

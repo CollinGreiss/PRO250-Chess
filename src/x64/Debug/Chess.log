@@ -1,2 +1,16 @@
-﻿  MainLoop.cpp
+﻿  Game.cpp
+  MainLoop.cpp
+  Generating Code...
+MSVCRTD.lib(guard_dispatch.obj) : warning LNK4020: a type record in 'd:\projects\c++\chess\src\x64\debug\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+MSVCRTD.lib(denormal_control.obj) : warning LNK4020: a type record in 'd:\projects\c++\chess\src\x64\debug\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+MSVCRTD.lib(env_mode.obj) : warning LNK4020: a type record in 'd:\projects\c++\chess\src\x64\debug\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+MSVCRTD.lib(std_type_info_static.obj) : warning LNK4020: a type record in 'd:\projects\c++\chess\src\x64\debug\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+MSVCRTD.lib(pdblkup.obj) : warning LNK4020: a type record in 'd:\projects\c++\chess\src\x64\debug\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+LINK : warning LNK4020: a type record in 'd:\projects\c++\chess\src\x64\debug\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+LINK : warning LNK4020: a type record in 'd:\projects\c++\chess\src\x64\debug\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+LINK : warning LNK4020: a type record in 'd:\projects\c++\chess\src\x64\debug\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+LINK : warning LNK4020: a type record in 'd:\projects\c++\chess\src\x64\debug\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+LINK : warning LNK4020: a type record in 'd:\projects\c++\chess\src\x64\debug\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+LINK : warning LNK4020: a type record in 'd:\projects\c++\chess\src\x64\debug\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+LINK : warning LNK4020: a type record in 'd:\projects\c++\chess\src\x64\debug\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
   Chess.vcxproj -> D:\Projects\C++\Chess\x64\Debug\Chess.exe

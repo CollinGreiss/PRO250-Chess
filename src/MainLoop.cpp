@@ -94,7 +94,7 @@ void MainLoop::Run(char playerSideChar, bool isPlayingVsBot)
 			{
 			 // Here we should get a move from an AI
 			 // Here we should recorde a mode to our game 
-			 // game->move();
+			 //game->move();
 			 //game->calcAllMoves()
 			}
 		}

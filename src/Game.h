@@ -9,6 +9,7 @@
 #include "King.h"
 #include "Queen.h"
 
+
 class Game
 {
 public:
@@ -21,7 +22,7 @@ public:
 	Piece* GetFieldPos(int row, int col);
 
     //Moves a piece
-    void move(Piece* piece, PossibleMove);
+    std::string move(Piece* piece, PossibleMove);
 
     // returns m_turn
     Piece::Team getTurn() { return m_turn; };
