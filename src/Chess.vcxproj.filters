@@ -102,6 +102,9 @@
     <ClCompile Include="treeAI.cpp">
       <Filter>Quelldateien\ChessAI\Functions</Filter>
     </ClCompile>
+    <ClCompile Include="printAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDL_Handler.h">

@@ -2,10 +2,9 @@
 #include "Piece.h"
 #include <iostream>
 
-Game::Game(SDL_Handler* handler, char playerSideChar)
+Game::Game(SDL_Handler* handler, Piece::Team playerTeam)
 {
-    if (playerSideChar == 'B' || playerSideChar == 'b')  playerSide = Piece::Team::BLACK;
-    else playerSide = Piece::Team::WHITE;
+    playerSide = playerTeam;
 
     int blackPieceYPos = 0;
     int blackPawnYPos = 1;

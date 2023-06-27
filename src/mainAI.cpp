@@ -98,7 +98,7 @@ mainAI::mainAI()
     root = new tNode;
     init_materials(root->materials);
     root->cur_side = 0; // 0 denotes human/player side
-   // print_board(root); //Doesnt work
+    print_board(root); //Doesnt work
 }
 
 mainAI::~mainAI()

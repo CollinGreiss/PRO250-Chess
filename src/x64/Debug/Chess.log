@@ -1,3 +1,2 @@
-﻿  mainAI.cpp
-mainAI.obj : error LNK2019: unresolved external symbol "void __cdecl print_board(struct tNode * &)" (?print_board@@YAXAEAPEAUtNode@@@Z) referenced in function "public: __cdecl mainAI::mainAI(void)" (??0mainAI@@QEAA@XZ)
-D:\Projects\C++\Chess\x64\Debug\Chess.exe : fatal error LNK1120: 1 unresolved externals
+﻿  MainLoop.cpp
+  Chess.vcxproj -> D:\Projects\C++\Chess\x64\Debug\Chess.exe

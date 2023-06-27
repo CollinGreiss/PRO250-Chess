@@ -13,7 +13,7 @@ class Game
 {
 public:
 	// Constructor
-	Game(SDL_Handler* handler, char playerSideChar = 'W');
+	Game(SDL_Handler* handler, Piece::Team playerTeam = Piece::Team::WHITE);
     // Destructor
     ~Game();
 
