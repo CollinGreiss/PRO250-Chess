@@ -1,5 +1,7 @@
 #pragma once
 
+const char boardXLetters[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+
 enum class MoveType
 {
 	NORMAL, 

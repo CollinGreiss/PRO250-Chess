@@ -3,6 +3,7 @@
 #include "Misc.h"
 #include "Game.h"
 
+#include <iostream>
 #include <SDL.h>
 #include <stdio.h>
 #include <memory>
@@ -77,8 +78,9 @@ void MainLoop::Run(char playerSideChar, bool isPlayingVsBot)
 							{
 								if (value.MovePos.xCoord == xEnd && value.MovePos.yCoord == yEnd)
 								{
-									game->move(clickedOn, PossibleMove{ {xEnd, yEnd}, value.Move_Type }); // Here we should return a string of a move
+									std::string UserMoveForAI = game->move(clickedOn, PossibleMove{ {xEnd, yEnd}, value.Move_Type }); // Here we should return a string of a move
 									//Here we should give player's move to AI
+									ChessAI->GetUserInput(UserMoveForAI);
 								}
 							}
 							xStart = -1;
@@ -90,12 +92,17 @@ void MainLoop::Run(char playerSideChar, bool isPlayingVsBot)
 					}
 				}
 			}
-			else
+			else if(!ChessAI->isBotThinking())
 			{
+			 std::cout<<"Ches ai move = " <<ChessAI->CalculateAIMove()<<std::endl;
 			 // Here we should get a move from an AI
 			 // Here we should recorde a mode to our game 
+			 // xStart = -1;
+		 	 //	yStart = -1;
+			 //	yEnd = -1;
 			 //game->move();
 			 //game->calcAllMoves()
+			 //clickedOn = nullptr;
 			}
 		}
 	}

@@ -2,7 +2,6 @@
 #include "Piece.h"
 #include <iostream>
 
-char boardXLetters[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
 Game::Game(SDL_Handler* handler, Piece::Team playerTeam)
 {
     playerSide = playerTeam;
@@ -143,18 +142,9 @@ std::string Game::move(Piece* start, PossibleMove move)
         m_checkEnPassant = true;
     }
 
-    //Moves for black doesn't work right
-    std::cout << "Start.x = " << start->getPos().xCoord << "Start.y = " << start->getPos().yCoord <<
-        "  move.x = " << move.MovePos.xCoord << " move.y = " << move.MovePos.yCoord << std::endl;
     std::string MoveString;
 
-    char StartXLetter = boardXLetters[start->getPos().xCoord];
-    int StartYPos = playerSide == Piece::Team::WHITE ? (8 - start->getPos().yCoord) : (start->getPos().yCoord + 1);
-
-    char EndXLetter = boardXLetters[move.MovePos.xCoord];
-    int EndYPos = playerSide == Piece::Team::WHITE ? (8 - move.MovePos.yCoord) : (move.MovePos.yCoord + 1);
-
-    MoveString = StartXLetter + std::to_string(StartYPos) + EndXLetter + std::to_string(EndYPos);
+    MoveString = MoveToAIMove(start, move);
     std::cout << "Move = " << MoveString << std::endl;
 
     switch (move.Move_Type)
@@ -180,6 +170,26 @@ std::string Game::move(Piece* start, PossibleMove move)
     return MoveString;
 }
 
+std::string Game::MoveToAIMove(Piece* start, PossibleMove move)
+{
+    std::cout << "Start.x = " << start->getPos().xCoord << "Start.y = " << start->getPos().yCoord <<
+        "  move.x = " << move.MovePos.xCoord << " move.y = " << move.MovePos.yCoord << std::endl;
+    std::string MoveString;
+
+    char StartXLetter = playerSide == Piece::Team::WHITE ? boardXLetters[start->getPos().xCoord] : boardXLetters[7 - start->getPos().xCoord];
+    int StartYPos = playerSide == Piece::Team::WHITE ? (8 - start->getPos().yCoord) : (start->getPos().yCoord + 1);
+
+    char EndXLetter = playerSide == Piece::Team::WHITE ? boardXLetters[move.MovePos.xCoord] : boardXLetters[7 - move.MovePos.xCoord];
+    int EndYPos = playerSide == Piece::Team::WHITE ? (8 - move.MovePos.yCoord) : (move.MovePos.yCoord + 1);
+    MoveString = StartXLetter + std::to_string(StartYPos) + EndXLetter + std::to_string(EndYPos);
+
+    return MoveString;
+}
+
+std::string Game::AIMoveToMove(std::string)
+{
+    return std::string();
+}
 
 void Game::normal(int xStart, int yStart, int xEnd, int yEnd)
 {
@@ -569,6 +579,7 @@ void Game::calcAllMoves()
         }
     }
 }
+
 
 bool Game::isValidMove(int x, int y, Piece* piece)
 {

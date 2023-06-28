@@ -49,11 +49,13 @@ public:
     mainAI();
     ~mainAI();
 
+    bool isBotThinking() { return botIsThinking; };
     void GetUserInput(string user_input);
     string CalculateAIMove();
 private:
-
     void ChangeRootPos();
+    bool botIsThinking = false;
+
     Node root;
     Node best;
 };

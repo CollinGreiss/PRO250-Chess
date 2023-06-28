@@ -105,6 +105,7 @@ mainAI::~mainAI()
 {
 }
 
+
 void mainAI::GetUserInput(string user_input)
 {
     exec_player_move(root, user_input);
@@ -112,10 +113,12 @@ void mainAI::GetUserInput(string user_input)
 
 string mainAI::CalculateAIMove()
 {
+    botIsThinking = true;
     next_move(root, 0);
     minimax_alpha_beta(root, best, 0, 0, LOWEST_SCORE, HIGHEST_SCORE);
     ChangeRootPos();
 
+    botIsThinking = false;
     return string();
 }
 

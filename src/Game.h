@@ -27,6 +27,9 @@ public:
     // returns m_turn
     Piece::Team getTurn() { return m_turn; };
 
+    std::string MoveToAIMove(Piece* start, PossibleMove move);
+    std::string AIMoveToMove(std::string);
+
     // true, if the move is valid  ;  false if not
     bool isValidMove(int x, int y, Piece* piece);
 
