@@ -54,6 +54,7 @@ public:
     string CalculateAIMove();
 private:
     void ChangeRootPos();
+    string ExtractMove();
     bool botIsThinking = false;
 
     Node root;
