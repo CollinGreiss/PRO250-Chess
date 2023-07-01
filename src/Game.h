@@ -28,7 +28,7 @@ public:
     Piece::Team getTurn() { return m_turn; };
 
     std::string MoveToAIMove(Piece* start, PossibleMove move);
-    std::string AIMoveToMove(std::string);
+    std::vector<int> AIMoveToMove(std::string AIMove);
 
     // true, if the move is valid  ;  false if not
     bool isValidMove(int x, int y, Piece* piece);
@@ -36,6 +36,7 @@ public:
     // calculates all allowed moves of every piece
     void calcAllMoves();
 
+    void InsertAIMove(std::string AIMove);
     // light up the possible Moves
     void renderPossibleMoves(Piece* piece);
 
@@ -47,6 +48,7 @@ private:
 	// 2D Field array, every Position has got a PIece::Team and a piece
 	Piece* m_field[8][8];
 
+    Piece* clickedOn = nullptr;
     // disables enPassant for every Piece
     void DisableEnPassant();
 

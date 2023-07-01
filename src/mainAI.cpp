@@ -3,6 +3,8 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+
+#include "Misc.h"
 #include "mainAI.h"
 
 using namespace std;
@@ -124,7 +126,7 @@ string mainAI::CalculateAIMove()
     ChangeRootPos();
     print_board(root);
     botIsThinking = false;
-    return string();
+    return AIMove;
 }
 
 //void print_row(char row[]) {
@@ -159,9 +161,9 @@ string mainAI::ExtractMove()
         {
             if (root->board[i][row] != best->board[i][row])
             {
-                AIMove += to_string((row - 1));
+                AIMove += to_string(row - 2);
                 AIMove += to_string(col);
-                cout << "Row = " << (row - 1) << "Column = " << (col) << endl;
+                cout << "Row = " << boardXLetters[(row - 2)] << "Column = " << (col) << endl;
             }
         }
 
@@ -180,14 +182,9 @@ void mainAI::ChangeRootPos()
     int a, b;
     for (a = 0; a < 12; a++) {
         for (b = 0; b < 12; b++) {
-            if (root->board[a][b] != best->board[a][b])
-            {
-                cout << a << b << " " << endl;
-            }
             root->board[a][b] = best->board[a][b];
         }
     }
-    //Here we should check the difference between root and best board, and decide, what changed
     root->materials = best->materials;
     root->w_king_pos = best->w_king_pos;
     root->b_king_pos = best->b_king_pos;

@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Piece.h"
 #include <iostream>
+#include <vector>
 
 Game::Game(SDL_Handler* handler, Piece::Team playerTeam)
 {
@@ -144,6 +145,9 @@ std::string Game::move(Piece* start, PossibleMove move)
 
     std::string MoveString;
 
+    std::cout << "In game move function: Start.x = " << start->getPos().xCoord <<" Start.y = " << start->getPos().yCoord<<
+    " move.x = " << move.MovePos.xCoord <<"Move.y = "<< move.MovePos.yCoord<<std::endl;
+
     MoveString = MoveToAIMove(start, move);
     std::cout << "Move = " << MoveString << std::endl;
 
@@ -170,6 +174,15 @@ std::string Game::move(Piece* start, PossibleMove move)
     return MoveString;
 }
 
+void Game::InsertAIMove(std::string AIMove)
+{
+    std::vector NormalMove = AIMoveToMove(AIMove);
+    clickedOn = GetFieldPos(NormalMove[0], NormalMove[1]);
+
+    move(clickedOn, PossibleMove{ {NormalMove[2], NormalMove[3]}, MoveType::NORMAL });
+}
+
+
 std::string Game::MoveToAIMove(Piece* start, PossibleMove move)
 {
     std::cout << "Start.x = " << start->getPos().xCoord << "Start.y = " << start->getPos().yCoord <<
@@ -186,9 +199,22 @@ std::string Game::MoveToAIMove(Piece* start, PossibleMove move)
     return MoveString;
 }
 
-std::string Game::AIMoveToMove(std::string)
+std::vector<int> Game::AIMoveToMove(std::string AIMove)
 {
-    return std::string();
+    //Check this function
+    std::vector<int>NormalMove;
+    int xStart = (AIMove[0] - '0') ;
+    int yStart = (AIMove[1] - '0') ;
+    int xEnd =   (AIMove[2] - '0') ;
+    int yEnd =   (AIMove[3] - '0') ;
+    NormalMove.resize(4);
+
+    NormalMove[0] = playerSide == Piece::Team::WHITE ? xStart : (7 - xStart);
+    NormalMove[1] = playerSide == Piece::Team::WHITE ? (8 - yStart) : (yStart + 1);
+    NormalMove[2] = playerSide == Piece::Team::WHITE ? xEnd : (7 - xEnd);
+    NormalMove[3] = playerSide == Piece::Team::WHITE ? (8 - yEnd) : (yEnd + 1);
+
+    return NormalMove;
 }
 
 void Game::normal(int xStart, int yStart, int xEnd, int yEnd)

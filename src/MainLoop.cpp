@@ -94,15 +94,14 @@ void MainLoop::Run(char playerSideChar, bool isPlayingVsBot)
 			}
 			else if(!ChessAI->isBotThinking())
 			{
-			 std::cout<<"Ches ai move = " <<ChessAI->CalculateAIMove()<<std::endl;
-			 // Here we should get a move from an AI
-			 // Here we should recorde a mode to our game 
-			 // xStart = -1;
-		 	 //	yStart = -1;
-			 //	yEnd = -1;
-			 //game->move();
-			 //game->calcAllMoves()
-			 //clickedOn = nullptr;
+			 std::string chessAIMoveStr = ChessAI->CalculateAIMove();
+			 game->InsertAIMove(chessAIMoveStr);
+			 game->calcAllMoves();
+			 clickedOn = nullptr;
+
+			 xStart = -1;
+		 	 yStart = -1;
+			 yEnd = -1;
 			}
 		}
 	}
