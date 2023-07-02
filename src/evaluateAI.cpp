@@ -141,7 +141,7 @@ double material_score(map<char, int>& m) {
 
     double black = PawnWt * m['p'] + KnightWt * m['n'] + BishopWt * m['b'] + RookWt * m['r'] + QueenWt * m['q'] + KingWt * m['k'];
     double white = PawnWt * m['P'] + KnightWt * m['N'] + BishopWt * m['B'] + RookWt * m['R'] + QueenWt * m['Q'] + KingWt * m['K'];
-
+    // Here we should check a side 
     return (white - black);
 }
 
@@ -180,6 +180,7 @@ double static_eval(Node& root) {
                 score -= bKnightTable[i - 2][j - 2];
             if ('p' == c)
                 score -= bPawnTable[i - 2][j - 2];
+         
         }
     }
     return score / 100;

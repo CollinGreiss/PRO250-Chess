@@ -26,7 +26,7 @@ double minimax_alpha_beta(Node& root, Node& best, int depth, bool state, double 
 
             double val = minimax_alpha_beta(*it, best, depth + 1, 0, alpha, beta);
             if (val > alpha) {
-                if (0 == depth)
+                if (depth == 0)
                     best = *it;
                 alpha = val;
             }
