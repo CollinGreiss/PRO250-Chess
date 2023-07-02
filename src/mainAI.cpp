@@ -6,6 +6,7 @@
 
 #include "Misc.h"
 #include "mainAI.h"
+#include "Piece.h"
 
 using namespace std;
 vector<string> prev_moves;
@@ -95,11 +96,12 @@ void init_materials(map<char, int>& m) {
 //    return 0;
 //}
 
-mainAI::mainAI()
+mainAI::mainAI(Piece::Team playerTeam )
 {
     root = new tNode;
     init_materials(root->materials);
-    root->cur_side = 0; // 0 denotes human/player side
+
+    root->cur_side = playerTeam == Piece::Team::WHITE? 0 : 1; // 0 denotes human/player side
     print_board(root); //Doesnt work
 }
 

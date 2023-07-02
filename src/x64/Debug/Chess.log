@@ -1,2 +1,4 @@
-﻿  Game.cpp
+﻿  knightAI.cpp
+  moveAI.cpp
+  Generating Code...
   Chess.vcxproj -> D:\Projects\C++\Chess\x64\Debug\Chess.exe

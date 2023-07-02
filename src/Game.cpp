@@ -134,6 +134,7 @@ Piece* Game::GetFieldPos(int row, int col)
 
 std::string Game::move(Piece* start, PossibleMove move)
 {
+
 	if (m_checkEnPassant)
 	{
 		DisableEnPassant();
@@ -179,6 +180,12 @@ void Game::InsertAIMove(std::string AIMove)
 	std::vector NormalMove = AIMoveToMove(AIMove);
 	clickedOn = GetFieldPos(NormalMove[0], NormalMove[1]);
 
+	if (clickedOn == NULL || clickedOn->getTeam() == playerSide)
+	{
+		clickedOn = GetFieldPos(NormalMove[2], NormalMove[3]);
+		move(clickedOn, PossibleMove{ {NormalMove[0], NormalMove[1]}, MoveType::NORMAL });
+	}
+	else
 	move(clickedOn, PossibleMove{ {NormalMove[2], NormalMove[3]}, MoveType::NORMAL });
 }
 
@@ -209,15 +216,15 @@ std::vector<int> Game::AIMoveToMove(std::string AIMove)
 	int yEnd = (AIMove[3] - '0');
 	NormalMove.resize(4);
 
-	/*NormalMove[0] = playerSide == Piece::Team::WHITE ? xStart : (7 - xStart);
-	NormalMove[1] = playerSide == Piece::Team::WHITE ? (8 - yStart) : (yStart + 1);
+	NormalMove[0] = playerSide == Piece::Team::WHITE ? xStart : (7 - xStart);
+	NormalMove[1] = playerSide == Piece::Team::WHITE ? (8 - yStart) : (yStart - 1);
 	NormalMove[2] = playerSide == Piece::Team::WHITE ? xEnd : (7 - xEnd);
-	NormalMove[3] = playerSide == Piece::Team::WHITE ? (8 - yEnd) : (yEnd + 1);*/
+	NormalMove[3] = playerSide == Piece::Team::WHITE ? (8 - yEnd) : (yEnd - 1);
 
-	NormalMove[0] = xStart;
+	/*NormalMove[0] = xStart;
 	NormalMove[1] = (8 - yStart);
 	NormalMove[2] = xEnd ;
-	NormalMove[3] = (8 - yEnd);
+	NormalMove[3] = (8 - yEnd);*/
 
 	return NormalMove;
 }

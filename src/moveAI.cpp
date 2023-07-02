@@ -14,7 +14,7 @@ void next_move(Node& root, int depth) {
         for (j = 2; j < 10; j++) {
             char c = root->board[i][j];
 
-            if (0 == root->cur_side) { // WHITE has moved. Looking for BLACK pieces to move
+            if (root->cur_side == 0) { // WHITE has moved. Looking for BLACK pieces to move
                 switch (c) {
                 case 'q': queen(root, i, j, 1); break;
                 case 'r': rook(root, i, j, 1); break;

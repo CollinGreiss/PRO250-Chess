@@ -3,6 +3,7 @@
 #include <map>
 #include <algorithm>
 
+#include "Piece.h"
 using namespace std;
 
 #ifndef MAIN_H_INCLUDED
@@ -31,6 +32,21 @@ struct tNode {
         {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'}
     };
 
+ /*   char boardBlack[12][12] = {
+        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+        {'x', 'x', 'r', 'n', 'b', 'k', 'q', 'b', 'n', 'r', 'x', 'x'},
+        {'x', 'x', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'x', 'x'},
+        {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+        {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+        {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+        {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+        {'x', 'x', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'x', 'x'},
+        {'x', 'x', 'R', 'N', 'B', 'K', 'Q', 'B', 'N', 'R', 'x', 'x'},
+        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'}
+    };*/
+
     map<char, int> materials;
 
     // @param bool cur_side :: white=0 black=1
@@ -46,7 +62,7 @@ typedef tNode* Node;
 class mainAI
 {
 public:
-    mainAI();
+    mainAI(Piece::Team playerTeam = Piece::Team::WHITE);
     ~mainAI();
 
     bool isBotThinking() { return botIsThinking; };

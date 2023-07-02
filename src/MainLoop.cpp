@@ -21,6 +21,8 @@ void MainLoop::Run(char playerSideChar, bool isPlayingVsBot)
 	else playerTeam = Piece::Team::WHITE;
 
 	std::unique_ptr<Game> game = std::make_unique<Game>(&handler, playerTeam);
+	std::unique_ptr<mainAI> ChessAI = std::make_unique<mainAI>(playerTeam);
+
 	bool quit = false;
 
 	int xStart = -1;
@@ -29,8 +31,6 @@ void MainLoop::Run(char playerSideChar, bool isPlayingVsBot)
 	int yEnd = -1;
 	Piece* clickedOn = nullptr;
 
-	//AI_API* ChessAI = new AI_API();
-	std::unique_ptr<mainAI> ChessAI = std::make_unique<mainAI>();
 	
 	while (!quit)
 	{
