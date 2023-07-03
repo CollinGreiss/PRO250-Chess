@@ -102,6 +102,8 @@ mainAI::mainAI(Piece::Team playerTeam )
     init_materials(root->materials);
 
     root->cur_side = playerTeam == Piece::Team::WHITE? 0 : 1; // 0 denotes human/player side
+    isAIPlayingWhite = playerTeam == Piece::Team::WHITE ? false : true;
+
     print_board(root); //Doesnt work
 }
 
@@ -122,7 +124,7 @@ string mainAI::CalculateAIMove()
     string AIMove;
     botIsThinking = true;
     next_move(root, 0);
-    minimax_alpha_beta(root, best, 0, 0, LOWEST_SCORE, HIGHEST_SCORE);
+    minimax_alpha_beta(root, best, 0, 0, LOWEST_SCORE, HIGHEST_SCORE, isAIPlayingWhite);
     AIMove = ExtractMove();
 
     ChangeRootPos();

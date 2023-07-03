@@ -137,17 +137,18 @@ const int bPawnTable[8][8] = {
 };
 
 
-double material_score(map<char, int>& m) {
+double material_score(map<char, int>& m, bool isAIPlayingWhite) {
 
     double black = PawnWt * m['p'] + KnightWt * m['n'] + BishopWt * m['b'] + RookWt * m['r'] + QueenWt * m['q'] + KingWt * m['k'];
     double white = PawnWt * m['P'] + KnightWt * m['N'] + BishopWt * m['B'] + RookWt * m['R'] + QueenWt * m['Q'] + KingWt * m['K'];
     // Here we should check a side 
-    return (white - black);
+    double finalScore = isAIPlayingWhite ? (black - white) : (white - black);
+    return finalScore;
 }
 
 
-double static_eval(Node& root) {
-    double score = material_score(root->materials);
+double static_eval(Node& root, bool isAIPlayingWhite) {
+    double score = material_score(root->materials, isAIPlayingWhite);
     int i, j;
     for (i = 2; i < 10; i++) {
         for (j = 2; j < 10; j++) {

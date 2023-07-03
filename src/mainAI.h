@@ -71,6 +71,7 @@ public:
 private:
     void ChangeRootPos();
     string ExtractMove();
+    bool isAIPlayingWhite = false;
     bool botIsThinking = false;
 
     Node root;
@@ -87,7 +88,7 @@ void tree_delete(Node& root);
 // ==================== AI FUNCTIONS ===============================================
 bool same_side(bool side, char target);
 void next_move(Node& root, int depth);
-double static_eval(Node& root);
+double static_eval(Node& root, bool isAIPlayingWhite);
 bool is_repeat(Node& test);
 
 
@@ -101,7 +102,7 @@ void king(Node& root, int row, int col, bool side);
 
 
 // ==================== MINIMAX WITH ALPHA-BETA AND PREVIOUS MOVES VECTOR ==========
-double minimax_alpha_beta(Node& root, Node& best, int depth, bool state, double alpha, double beta);
+double minimax_alpha_beta(Node& root, Node& best, int depth, bool state, double alpha, double beta, bool isAIPlayingWhite = false);
 extern vector<string> prev_moves;
 extern int static_evals;
 
