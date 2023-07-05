@@ -22,7 +22,7 @@ public:
 	Piece* GetFieldPos(int row, int col);
 
     //Moves a piece
-    std::string move(Piece* piece, PossibleMove move);
+    std::pair<std::string, MoveType> move(Piece* piece, PossibleMove move);
 
     // returns m_turn
     Piece::Team getTurn() { return m_turn; };
@@ -64,6 +64,8 @@ private:
     // castles move
     void Castles(int xStart, int yStart, int xEnd, int yEnd);
 
+    char ConvertAIXCord(int xCoord);
+    int ConvertAIYCord(int yCoord);
     // Background filename
     std::string m_backgroundFilename;
 

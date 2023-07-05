@@ -78,9 +78,9 @@ void MainLoop::Run(char playerSideChar, bool isPlayingVsBot)
 							{
 								if (value.MovePos.xCoord == xEnd && value.MovePos.yCoord == yEnd)
 								{
-									std::string UserMoveForAI = game->move(clickedOn, PossibleMove{ {xEnd, yEnd}, value.Move_Type }); // Here we should return a string of a move
+									std::pair<std::string, MoveType> UserMoveForAI = game->move(clickedOn, PossibleMove{ {xEnd, yEnd}, value.Move_Type }); // Here we should return a string of a move
 									//Here we should give player's move to AI
-									ChessAI->GetUserInput(UserMoveForAI);
+									ChessAI->GetUserInput(UserMoveForAI.first);
 								}
 							}
 							xStart = -1;

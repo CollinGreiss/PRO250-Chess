@@ -21,12 +21,13 @@ int map_to_int(char c) {
     return val;
 }
 
-void exec_player_move(Node& root, string mv) {
+void exec_player_move(Node& root, string mv) 
+{
     // Mapping mv to the correct array coordinates (s,t) --> (u,v)
-    int s = 8 - (mv.c_str()[1] - '0') + 2;
-    int t = map_to_int(mv.c_str()[0]) + 1;
-    int u = 8 - (mv.c_str()[3] - '0') + 2;
-    int v = map_to_int(mv.c_str()[2]) + 1;
+    int s = 8 - (mv.c_str()[1] - '0') + 2; //XStart
+    int t = map_to_int(mv.c_str()[0]) + 1; //YStart
+    int u = 8 - (mv.c_str()[3] - '0') + 2; //XEnd
+    int v = map_to_int(mv.c_str()[2]) + 1; //YEnd
 
     // Replacing the target square with source square
     char source = root->board[s][t];
@@ -35,6 +36,6 @@ void exec_player_move(Node& root, string mv) {
     root->board[u][v] = source;
     root->board[s][t] = ' ';
 
-    if (' ' != target)
+    if (target != ' ')
         root->materials[target] -= 1;
 }

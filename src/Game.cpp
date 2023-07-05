@@ -132,9 +132,8 @@ Piece* Game::GetFieldPos(int row, int col)
 }
 
 
-std::string Game::move(Piece* start, PossibleMove move)
+std::pair<std::string, MoveType> Game::move(Piece* start, PossibleMove move)
 {
-
 	if (m_checkEnPassant)
 	{
 		DisableEnPassant();
@@ -144,14 +143,18 @@ std::string Game::move(Piece* start, PossibleMove move)
 		m_checkEnPassant = true;
 	}
 
-	std::string MoveString;
+	std::pair<std::string, MoveType>MoveForAI;
+	//std::string MoveString;
 
 	std::cout << "In game move function: Start.x = " << start->getPos().xCoord << " Start.y = " << start->getPos().yCoord <<
 		" move.x = " << move.MovePos.xCoord << "Move.y = " << move.MovePos.yCoord << std::endl;
 
-	MoveString = MoveToAIMove(start, move);
-	std::cout << "Move = " << MoveString << std::endl;
+	MoveForAI.first = MoveToAIMove(start, move);
+	std::cout << "Move = " << MoveForAI.first << std::endl;
 
+	//For AI Castle we return move Start, End, KingPos start, kingPosEnd;
+	//For ENPASSANT we return move start, end, Piece position to eat
+	//For exchange we retrun move start, end, new piece of an Pawn
 	switch (move.Move_Type)
 	{
 	case MoveType::NORMAL:
@@ -172,7 +175,7 @@ std::string Game::move(Piece* start, PossibleMove move)
 
 	GameState();
 
-	return MoveString;
+	return MoveForAI;
 }
 
 void Game::InsertAIMove(std::string AIMove)
@@ -196,15 +199,29 @@ std::string Game::MoveToAIMove(Piece* start, PossibleMove move)
 		"  move.x = " << move.MovePos.xCoord << " move.y = " << move.MovePos.yCoord << std::endl;
 	std::string MoveString;
 
-	char StartXLetter = playerSide == Piece::Team::WHITE ? boardXLetters[start->getPos().xCoord] : boardXLetters[7 - start->getPos().xCoord];
-	int StartYPos = playerSide == Piece::Team::WHITE ? (8 - start->getPos().yCoord) : (start->getPos().yCoord + 1);
+	char StartXLetter = ConvertAIXCord(start->getPos().xCoord);
+	int StartYPos = ConvertAIYCord(start->getPos().yCoord);
 
-	char EndXLetter = playerSide == Piece::Team::WHITE ? boardXLetters[move.MovePos.xCoord] : boardXLetters[7 - move.MovePos.xCoord];
-	int EndYPos = playerSide == Piece::Team::WHITE ? (8 - move.MovePos.yCoord) : (move.MovePos.yCoord + 1);
+	char EndXLetter = ConvertAIXCord(move.MovePos.xCoord);
+	int EndYPos = ConvertAIYCord(move.MovePos.yCoord);
+
 	MoveString = StartXLetter + std::to_string(StartYPos) + EndXLetter + std::to_string(EndYPos);
 
 	return MoveString;
 }
+
+char Game::ConvertAIXCord(int xCoord)
+{
+	char AI_XPos = playerSide == Piece::Team::WHITE ? boardXLetters[xCoord] : boardXLetters[7 - xCoord];
+	return AI_XPos;
+}
+
+int Game::ConvertAIYCord(int yCoord)
+{
+	int AIYPos = playerSide == Piece::Team::WHITE ? (8 - yCoord) : (yCoord  + 1);
+	return AIYPos;
+}
+
 
 std::vector<int> Game::AIMoveToMove(std::string AIMove)
 {
