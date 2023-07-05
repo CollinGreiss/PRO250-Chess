@@ -62,7 +62,7 @@ private:
     void Exchange(int xStart, int yStart, int xEnd, int yEnd);
 
     // castles move
-    void Castles(int xStart, int yStart, int xEnd, int yEnd);
+    std::string Castles(int xStart, int yStart, int xEnd, int yEnd);
 
     char ConvertAIXCord(int xCoord);
     int ConvertAIYCord(int yCoord);

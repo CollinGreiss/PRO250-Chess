@@ -144,15 +144,15 @@ std::pair<std::string, MoveType> Game::move(Piece* start, PossibleMove move)
 	}
 
 	std::pair<std::string, MoveType>MoveForAI;
+	MoveForAI.second = move.Move_Type;
 	//std::string MoveString;
 
 	std::cout << "In game move function: Start.x = " << start->getPos().xCoord << " Start.y = " << start->getPos().yCoord <<
 		" move.x = " << move.MovePos.xCoord << "Move.y = " << move.MovePos.yCoord << std::endl;
 
 	MoveForAI.first = MoveToAIMove(start, move);
-	std::cout << "Move = " << MoveForAI.first << std::endl;
 
-	//For AI Castle we return move Start, End, KingPos start, kingPosEnd;
+	//For AI Castle we return move Start, End, KingPos.X, RookPos.x;
 	//For ENPASSANT we return move start, end, Piece position to eat
 	//For exchange we retrun move start, end, new piece of an Pawn
 	switch (move.Move_Type)
@@ -161,7 +161,7 @@ std::pair<std::string, MoveType> Game::move(Piece* start, PossibleMove move)
 		normal(start->getPos().xCoord, start->getPos().yCoord, move.MovePos.xCoord, move.MovePos.yCoord);
 		break;
 	case MoveType::CASTLE:
-		Castles(start->getPos().xCoord, start->getPos().yCoord, move.MovePos.xCoord, move.MovePos.yCoord);
+		MoveForAI.first += Castles(start->getPos().xCoord, start->getPos().yCoord, move.MovePos.xCoord, move.MovePos.yCoord);
 		break;
 	case MoveType::ENPASSANT:
 		EnPassant(start->getPos().xCoord, start->getPos().yCoord, move.MovePos.xCoord, move.MovePos.yCoord);
@@ -174,7 +174,7 @@ std::pair<std::string, MoveType> Game::move(Piece* start, PossibleMove move)
 	}
 
 	GameState();
-
+	std::cout << "Move = " << MoveForAI.first << std::endl;
 	return MoveForAI;
 }
 
@@ -425,8 +425,9 @@ void Game::Exchange(int xStart, int yStart, int xEnd, int yEnd)
 }
 
 
-void Game::Castles(int xStart, int yStart, int xEnd, int yEnd) //Start - king position, end - rook position
+std::string Game::Castles(int xStart, int yStart, int xEnd, int yEnd) //Start - king position, end - rook position
 {
+	std::string castleStringForAI;
 	int newRookPosX;
 	int newKingPosX;
 	if (xEnd == 0) //Long castling for white, and short for black side
@@ -456,6 +457,8 @@ void Game::Castles(int xStart, int yStart, int xEnd, int yEnd) //Start - king po
 		}
 	}
 
+	castleStringForAI = ConvertAIXCord(newKingPosX) + ConvertAIYCord(newRookPosX);
+
 	m_field[newKingPosX][yEnd] = m_field[xStart][yEnd];
 	m_field[newRookPosX][yEnd] = m_field[xEnd][yEnd];
 
@@ -473,6 +476,8 @@ void Game::Castles(int xStart, int yStart, int xEnd, int yEnd) //Start - king po
 
 	m_field[newKingPosX][yEnd]->render();
 	m_field[newRookPosX][yEnd]->render();
+
+	return castleStringForAI;
 }
 
 void Game::GameState()
