@@ -112,7 +112,7 @@ mainAI::~mainAI()
 }
 
 
-void mainAI::GetUserInput(string user_input)
+void mainAI::GetUserInput(std::pair<std::string, MoveType>user_input)
 {
     exec_player_move(root, user_input);
     print_board(root);

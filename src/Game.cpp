@@ -144,13 +144,13 @@ std::pair<std::string, MoveType> Game::move(Piece* start, PossibleMove move)
 	}
 
 	std::pair<std::string, MoveType>MoveForAI;
-	MoveForAI.second = move.Move_Type;
 	//std::string MoveString;
 
 	std::cout << "In game move function: Start.x = " << start->getPos().xCoord << " Start.y = " << start->getPos().yCoord <<
 		" move.x = " << move.MovePos.xCoord << "Move.y = " << move.MovePos.yCoord << std::endl;
 
 	MoveForAI.first = MoveToAIMove(start, move);
+	MoveForAI.second = move.Move_Type;
 
 	//For AI Castle we return move Start, End, KingPos.X, RookPos.x;
 	//For ENPASSANT we return move start, end, Piece position to eat
@@ -457,7 +457,8 @@ std::string Game::Castles(int xStart, int yStart, int xEnd, int yEnd) //Start - 
 		}
 	}
 
-	castleStringForAI = ConvertAIXCord(newKingPosX) + ConvertAIYCord(newRookPosX);
+	castleStringForAI += ConvertAIXCord(newKingPosX);
+	castleStringForAI += ConvertAIXCord(newRookPosX);
 
 	m_field[newKingPosX][yEnd] = m_field[xStart][yEnd];
 	m_field[newRookPosX][yEnd] = m_field[xEnd][yEnd];

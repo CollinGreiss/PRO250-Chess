@@ -66,7 +66,7 @@ public:
     ~mainAI();
 
     bool isBotThinking() { return botIsThinking; };
-    void GetUserInput(string user_input);
+    void GetUserInput(std::pair<std::string, MoveType>user_input);
     string CalculateAIMove();
 private:
     void ChangeRootPos();
@@ -80,7 +80,13 @@ private:
 
 // ==================== BASIC FUNCTIONALITY AND TREE OPERATIONS ====================
 void print_board(Node& root);
-void exec_player_move(Node& root, string mv);
+void exec_player_move(Node& root, std::pair<std::string, MoveType>user_move);
+
+void exec_normalMove(Node& root, string mv);
+void exec_CastleMove(Node& root, string mv);
+void exec_EnpassatMove(Node& root, string mv);
+void exec_NewPieceMove(Node& root, string mv);
+
 void tree_insert(Node& root, int x, int y, int p, int q);
 void tree_delete(Node& root);
 
