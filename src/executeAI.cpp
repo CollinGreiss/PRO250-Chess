@@ -83,6 +83,18 @@ void exec_CastleMove(Node& root, string mv)
 
 void exec_EnpassatMove(Node& root, string mv)
 {
+    int XStart = map_to_int(mv.c_str()[0]) + 1; //XStart as a king position
+    int YStart = 8 - (mv.c_str()[1] - '0') + 2; //YStart as a king position
+
+    int XEnd = map_to_int(mv.c_str()[2]) + 1; //XEnd as a rook position
+    int YEnd = 8 - (mv.c_str()[3] - '0') + 2; //YEnd as a rook position
+
+    int YPawnToDestroy = 8 - (mv.c_str()[4] - '0') + 2;
+
+    root->board[YEnd][XEnd] = root->board[YStart][XStart];
+    root->board[YStart][XStart] = ' ';
+
+    root->board[YPawnToDestroy][XEnd] = ' ';
 }
 
 void exec_NewPieceMove(Node& root, string mv)

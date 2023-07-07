@@ -56,7 +56,7 @@ private:
     void normal(int xStart, int yStart, int xEnd, int yEnd);
 
     // enpassant move
-    void EnPassant(int xStart, int yStart, int xEnd, int yEnd);
+    std::string EnPassant(int xStart, int yStart, int xEnd, int yEnd);
 
     // exchange move
     void Exchange(int xStart, int yStart, int xEnd, int yEnd);

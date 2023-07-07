@@ -164,7 +164,7 @@ std::pair<std::string, MoveType> Game::move(Piece* start, PossibleMove move)
 		MoveForAI.first += Castles(start->getPos().xCoord, start->getPos().yCoord, move.MovePos.xCoord, move.MovePos.yCoord);
 		break;
 	case MoveType::ENPASSANT:
-		EnPassant(start->getPos().xCoord, start->getPos().yCoord, move.MovePos.xCoord, move.MovePos.yCoord);
+		MoveForAI.first += EnPassant(start->getPos().xCoord, start->getPos().yCoord, move.MovePos.xCoord, move.MovePos.yCoord);
 		break;
 	case MoveType::NEWPIECE:
 		Exchange(start->getPos().xCoord, start->getPos().yCoord, move.MovePos.xCoord, move.MovePos.yCoord);
@@ -294,17 +294,25 @@ void Game::normal(int xStart, int yStart, int xEnd, int yEnd)
 }
 
 
-void Game::EnPassant(int xStart, int yStart, int xEnd, int yEnd)
+std::string Game::EnPassant(int xStart, int yStart, int xEnd, int yEnd)
 {
+	std::string AIMoveToAdd;
+
 	Pawn* pawn_start = static_cast<Pawn*>(m_field[xStart][yStart]);
+
+	AIMoveToAdd += std::to_string(ConvertAIYCord(yEnd - pawn_start->moveDirection));
+
 	m_field[xEnd][yEnd - pawn_start->moveDirection] = nullptr;
 	m_field[xEnd][yEnd] = GetFieldPos(xStart, yStart);
 	m_field[xEnd][yEnd]->m_hasMoved = true;
 	m_field[xStart][yStart] = nullptr;
+
 	m_handler->undoPieceRender(xStart, yStart);
 	m_handler->undoPieceRender(xEnd, yEnd - pawn_start->moveDirection);
 	m_field[xEnd][yEnd]->setPosition(Point{ xEnd, yEnd });
 	m_field[xEnd][yEnd]->render();
+
+	return AIMoveToAdd;
 }
 
 
