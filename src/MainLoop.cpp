@@ -1,10 +1,13 @@
 #include "MainLoop.h"
-#include "SDL_Handler.h"
+
 #include "Misc.h"
 #include "Game.h"
 
 #include <iostream>
+
 #include <SDL.h>
+#include "SDL_Handler.h"
+
 #include <stdio.h>
 #include <memory>
 

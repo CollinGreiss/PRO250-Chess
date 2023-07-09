@@ -180,7 +180,7 @@ std::pair<std::string, MoveType> Game::move(Piece* start, PossibleMove move)
 
 void Game::InsertAIMove(std::string AIMove)
 {
-	std::vector NormalMove = AIMoveToMove(AIMove);
+	std::vector<int> NormalMove = AIMoveToMove(AIMove);
 	clickedOn = GetFieldPos(NormalMove[0], NormalMove[1]);
 
 	if (clickedOn == NULL || clickedOn->getTeam() == playerSide)
