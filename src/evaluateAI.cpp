@@ -153,35 +153,65 @@ double static_eval(Node& root, bool isAIPlayingWhite) {
     for (i = 2; i < 10; i++) {
         for (j = 2; j < 10; j++) {
             char c = root->board[i][j];
+            //if (isAIPlayingWhite)
+            //{
+            //    if ('K' == c)
+            //        score -= wKingTableMid[i - 2][j - 2];
+            //    if ('Q' == c)
+            //        score -= wQueenTable[i - 2][j - 2];
+            //    if ('R' == c)
+            //        score -= wRookTable[i - 2][j - 2];
+            //    if ('B' == c)
+            //        score -= wBishopTable[i - 2][j - 2];
+            //    if ('N' == c)
+            //        score -= wKnightTable[i - 2][j - 2];
+            //    if ('P' == c)
+            //        score -= wPawnTable[i - 2][j - 2];
 
-            // White's pieces
-            if ('K' == c)
-                score += wKingTableMid[i - 2][j - 2];
-            if ('Q' == c)
-                score += wQueenTable[i - 2][j - 2];
-            if ('R' == c)
-                score += wRookTable[i - 2][j - 2];
-            if ('B' == c)
-                score += wBishopTable[i - 2][j - 2];
-            if ('N' == c)
-                score += wKnightTable[i - 2][j - 2];
-            if ('P' == c)
-                score += wPawnTable[i - 2][j - 2];
+            //    // Black's pieces
+            //    if ('k' == c)
+            //        score += bKingTableMid[i - 2][j - 2];
+            //    if ('q' == c)
+            //        score += bQueenTable[i - 2][j - 2];
+            //    if ('r' == c)
+            //        score += bRookTable[i - 2][j - 2];
+            //    if ('b' == c)
+            //        score += bBishopTable[i - 2][j - 2];
+            //    if ('n' == c)
+            //        score += bKnightTable[i - 2][j - 2];
+            //    if ('p' == c)
+            //        score += bPawnTable[i - 2][j - 2];
+            //}
+            //else
+            //{
+                // White's pieces
+                if ('K' == c)
+                    score += wKingTableMid[i - 2][j - 2];
+                if ('Q' == c)
+                    score += wQueenTable[i - 2][j - 2];
+                if ('R' == c)
+                    score += wRookTable[i - 2][j - 2];
+                if ('B' == c)
+                    score += wBishopTable[i - 2][j - 2];
+                if ('N' == c)
+                    score += wKnightTable[i - 2][j - 2];
+                if ('P' == c)
+                    score += wPawnTable[i - 2][j - 2];
 
-            // Black's pieces
-            if ('k' == c)
-                score -= bKingTableMid[i - 2][j - 2];
-            if ('q' == c)
-                score -= bQueenTable[i - 2][j - 2];
-            if ('r' == c)
-                score -= bRookTable[i - 2][j - 2];
-            if ('b' == c)
-                score -= bBishopTable[i - 2][j - 2];
-            if ('n' == c)
-                score -= bKnightTable[i - 2][j - 2];
-            if ('p' == c)
-                score -= bPawnTable[i - 2][j - 2];
-         
+                // Black's pieces
+                if ('k' == c)
+                    score -= bKingTableMid[i - 2][j - 2];
+                if ('q' == c)
+                    score -= bQueenTable[i - 2][j - 2];
+                if ('r' == c)
+                    score -= bRookTable[i - 2][j - 2];
+                if ('b' == c)
+                    score -= bBishopTable[i - 2][j - 2];
+                if ('n' == c)
+                    score -= bKnightTable[i - 2][j - 2];
+                if ('p' == c)
+                    score -= bPawnTable[i - 2][j - 2];
+           // }
         }
     }
     return score / 100;

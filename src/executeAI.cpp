@@ -99,4 +99,18 @@ void exec_EnpassatMove(Node& root, string mv)
 
 void exec_NewPieceMove(Node& root, string mv)
 {
+    int s = 8 - (mv.c_str()[1] - '0') + 2; //XStart
+    int t = map_to_int(mv.c_str()[0]) + 1; //YStart
+    int u = 8 - (mv.c_str()[3] - '0') + 2; //XEnd
+    int v = map_to_int(mv.c_str()[2]) + 1; //YEnd
+
+    // Replacing the target square with source square
+    char source = root->board[s][t];
+    char target = root->board[u][v];
+
+    root->board[u][v] = mv[4];
+    root->board[s][t] = ' ';
+
+    if (target != ' ')
+        root->materials[target] -= 1;
 }

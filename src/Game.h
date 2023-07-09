@@ -59,7 +59,7 @@ private:
     std::string EnPassant(int xStart, int yStart, int xEnd, int yEnd);
 
     // exchange move
-    void Exchange(int xStart, int yStart, int xEnd, int yEnd);
+    std::string Exchange(int xStart, int yStart, int xEnd, int yEnd);
 
     // castles move
     std::string Castles(int xStart, int yStart, int xEnd, int yEnd);

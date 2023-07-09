@@ -146,8 +146,8 @@ std::pair<std::string, MoveType> Game::move(Piece* start, PossibleMove move)
 	std::pair<std::string, MoveType>MoveForAI;
 	//std::string MoveString;
 
-	std::cout << "In game move function: Start.x = " << start->getPos().xCoord << " Start.y = " << start->getPos().yCoord <<
-		" move.x = " << move.MovePos.xCoord << "Move.y = " << move.MovePos.yCoord << std::endl;
+	//std::cout << "In game move function: Start.x = " << start->getPos().xCoord << " Start.y = " << start->getPos().yCoord <<
+	//	" move.x = " << move.MovePos.xCoord << "Move.y = " << move.MovePos.yCoord << std::endl;
 
 	MoveForAI.first = MoveToAIMove(start, move);
 	MoveForAI.second = move.Move_Type;
@@ -167,14 +167,14 @@ std::pair<std::string, MoveType> Game::move(Piece* start, PossibleMove move)
 		MoveForAI.first += EnPassant(start->getPos().xCoord, start->getPos().yCoord, move.MovePos.xCoord, move.MovePos.yCoord);
 		break;
 	case MoveType::NEWPIECE:
-		Exchange(start->getPos().xCoord, start->getPos().yCoord, move.MovePos.xCoord, move.MovePos.yCoord);
+		MoveForAI.first += Exchange(start->getPos().xCoord, start->getPos().yCoord, move.MovePos.xCoord, move.MovePos.yCoord);
 		break;
 	default:
 		break;
 	}
 
 	GameState();
-	std::cout << "Move = " << MoveForAI.first << std::endl;
+	//std::cout << "Move = " << MoveForAI.first << std::endl;
 	return MoveForAI;
 }
 
@@ -195,8 +195,8 @@ void Game::InsertAIMove(std::string AIMove)
 
 std::string Game::MoveToAIMove(Piece* start, PossibleMove move)
 {
-	std::cout << "Start.x = " << start->getPos().xCoord << "Start.y = " << start->getPos().yCoord <<
-		"  move.x = " << move.MovePos.xCoord << " move.y = " << move.MovePos.yCoord << std::endl;
+	//std::cout << "Start.x = " << start->getPos().xCoord << "Start.y = " << start->getPos().yCoord <<
+	//	"  move.x = " << move.MovePos.xCoord << " move.y = " << move.MovePos.yCoord << std::endl;
 	std::string MoveString;
 
 	char StartXLetter = ConvertAIXCord(start->getPos().xCoord);
@@ -316,8 +316,10 @@ std::string Game::EnPassant(int xStart, int yStart, int xEnd, int yEnd)
 }
 
 
-void Game::Exchange(int xStart, int yStart, int xEnd, int yEnd)
+std::string Game::Exchange(int xStart, int yStart, int xEnd, int yEnd)
 {
+	std::string NewFigure;
+
 	SDL_Texture* text_rook = m_handler->loadImage("../res/Chess_rlt60.png");
 	SDL_Texture* text_knight = m_handler->loadImage("../res/Chess_nlt60.png");
 	SDL_Texture* text_bishop = m_handler->loadImage("../res/Chess_blt60.png");
@@ -386,18 +388,22 @@ void Game::Exchange(int xStart, int yStart, int xEnd, int yEnd)
 					if (x < m_handler->SCREEN_WIDTH / 640)
 					{
 						clickedOn = new Rook(team, Point{ xEnd, yEnd }, m_handler);
+						NewFigure = m_turn == Piece::Team::WHITE ? "R" : "r";
 					}
 					else if (x < 2 * m_handler->SCREEN_WIDTH / 640)
 					{
 						clickedOn = new Knight(team, Point{ xEnd, yEnd }, m_handler);
+						NewFigure = m_turn == Piece::Team::WHITE ? "N" : "n";
 					}
 					else if (x < 3 * m_handler->SCREEN_WIDTH / 640)
 					{
 						clickedOn = new Bishop(team, Point{ xEnd, yEnd }, m_handler);
+						NewFigure = m_turn == Piece::Team::WHITE ? "B" : "b";
 					}
 					else if (x <= 4 * m_handler->SCREEN_WIDTH / 640)
 					{
 						clickedOn = new Queen(team, Point{ xEnd, yEnd }, m_handler);
+						NewFigure = m_turn == Piece::Team::WHITE ? "Q" : "q";
 					}
 					std::cout << x << " " << m_handler->SCREEN_WIDTH / 640 << std::endl;
 				}
@@ -430,6 +436,8 @@ void Game::Exchange(int xStart, int yStart, int xEnd, int yEnd)
 	SDL_DestroyTexture(text_bishop);
 	SDL_DestroyTexture(text_knight);
 	SDL_DestroyTexture(text_queen);
+
+	return NewFigure;
 }
 
 

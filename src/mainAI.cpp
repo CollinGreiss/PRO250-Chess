@@ -104,7 +104,7 @@ mainAI::mainAI(Piece::Team playerTeam )
     root->cur_side = playerTeam == Piece::Team::WHITE? 0 : 1; // 0 denotes human/player side
     isAIPlayingWhite = playerTeam == Piece::Team::WHITE ? false : true;
 
-    print_board(root); //Doesnt work
+  //  print_board(root); //Doesnt work
 }
 
 mainAI::~mainAI()
@@ -115,7 +115,7 @@ mainAI::~mainAI()
 void mainAI::GetUserInput(std::pair<std::string, MoveType>user_input)
 {
     exec_player_move(root, user_input);
-    print_board(root);
+    //print_board(root);
 
 }
 
@@ -128,7 +128,7 @@ string mainAI::CalculateAIMove()
     AIMove = ExtractMove();
 
     ChangeRootPos();
-    print_board(root);
+    //print_board(root);
     botIsThinking = false;
     return AIMove;
 }
@@ -167,14 +167,14 @@ string mainAI::ExtractMove()
             {
                 AIMove += to_string(row - 2);
                 AIMove += to_string(col);
-                cout << "Row = " << boardXLetters[(row - 2)] << "Column = " << (col) << endl;
+               // cout << "Row = " << boardXLetters[(row - 2)] << "Column = " << (col) << endl;
             }
         }
 
         col--;
     }
 
-    cout << "AI move = " << AIMove << endl;
+   // cout << "AI move = " << AIMove << endl;
     return AIMove;
 }
 
