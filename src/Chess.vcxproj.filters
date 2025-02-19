@@ -33,9 +33,6 @@
     <ClCompile Include="SDL_Handler.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Piece.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -48,26 +45,26 @@
     <ClCompile Include="Misc.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Bishop.cpp">
+    <ClCompile Include="Pieces\Queen.cpp">
       <Filter>Quelldateien\Pieces</Filter>
     </ClCompile>
-    <ClCompile Include="King.cpp">
+    <ClCompile Include="Pieces\Rook.cpp">
       <Filter>Quelldateien\Pieces</Filter>
     </ClCompile>
-    <ClCompile Include="Knight.cpp">
+    <ClCompile Include="Pieces\Bishop.cpp">
       <Filter>Quelldateien\Pieces</Filter>
     </ClCompile>
-    <ClCompile Include="Pawn.cpp">
+    <ClCompile Include="Pieces\King.cpp">
       <Filter>Quelldateien\Pieces</Filter>
     </ClCompile>
-    <ClCompile Include="Queen.cpp">
+    <ClCompile Include="Pieces\Knight.cpp">
       <Filter>Quelldateien\Pieces</Filter>
     </ClCompile>
-    <ClCompile Include="Rook.cpp">
+    <ClCompile Include="Pieces\Pawn.cpp">
       <Filter>Quelldateien\Pieces</Filter>
     </ClCompile>
-    <ClCompile Include="mainAI.cpp">
-      <Filter>Quelldateien\ChessAI</Filter>
+    <ClCompile Include="Pieces\Piece.cpp">
+      <Filter>Quelldateien\Pieces</Filter>
     </ClCompile>
     <ClCompile Include="bishopAI.cpp">
       <Filter>Quelldateien\ChessAI\Functions</Filter>
@@ -93,6 +90,9 @@
     <ClCompile Include="pawnAI.cpp">
       <Filter>Quelldateien\ChessAI\Functions</Filter>
     </ClCompile>
+    <ClCompile Include="printAI.cpp">
+      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    </ClCompile>
     <ClCompile Include="queenAI.cpp">
       <Filter>Quelldateien\ChessAI\Functions</Filter>
     </ClCompile>
@@ -102,15 +102,12 @@
     <ClCompile Include="treeAI.cpp">
       <Filter>Quelldateien\ChessAI\Functions</Filter>
     </ClCompile>
-    <ClCompile Include="printAI.cpp">
-      <Filter>Quelldateien\ChessAI\Functions</Filter>
+    <ClCompile Include="mainAI.cpp">
+      <Filter>Quelldateien\ChessAI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDL_Handler.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Piece.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
@@ -122,22 +119,25 @@
     <ClInclude Include="Misc.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Bishop.h">
+    <ClInclude Include="Pieces\Bishop.h">
       <Filter>Headerdateien\Pieces</Filter>
     </ClInclude>
-    <ClInclude Include="King.h">
+    <ClInclude Include="Pieces\King.h">
       <Filter>Headerdateien\Pieces</Filter>
     </ClInclude>
-    <ClInclude Include="Knight.h">
+    <ClInclude Include="Pieces\Knight.h">
       <Filter>Headerdateien\Pieces</Filter>
     </ClInclude>
-    <ClInclude Include="Pawn.h">
+    <ClInclude Include="Pieces\Pawn.h">
       <Filter>Headerdateien\Pieces</Filter>
     </ClInclude>
-    <ClInclude Include="Queen.h">
+    <ClInclude Include="Pieces\Piece.h">
       <Filter>Headerdateien\Pieces</Filter>
     </ClInclude>
-    <ClInclude Include="Rook.h">
+    <ClInclude Include="Pieces\Queen.h">
+      <Filter>Headerdateien\Pieces</Filter>
+    </ClInclude>
+    <ClInclude Include="Pieces\Rook.h">
       <Filter>Headerdateien\Pieces</Filter>
     </ClInclude>
     <ClInclude Include="mainAI.h">

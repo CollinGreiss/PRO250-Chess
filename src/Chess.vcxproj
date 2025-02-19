@@ -19,14 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bishop.cpp" />
     <ClCompile Include="bishopAI.cpp" />
     <ClCompile Include="evaluateAI.cpp" />
     <ClCompile Include="executeAI.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="King.cpp" />
     <ClCompile Include="kingAI.cpp" />
-    <ClCompile Include="Knight.cpp" />
     <ClCompile Include="knightAI.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="mainAI.cpp" />
@@ -34,29 +31,32 @@
     <ClCompile Include="minimaxAI.cpp" />
     <ClCompile Include="Misc.cpp" />
     <ClCompile Include="moveAI.cpp" />
-    <ClCompile Include="Pawn.cpp" />
     <ClCompile Include="pawnAI.cpp" />
-    <ClCompile Include="Piece.cpp" />
+    <ClCompile Include="Pieces\Bishop.cpp" />
+    <ClCompile Include="Pieces\King.cpp" />
+    <ClCompile Include="Pieces\Knight.cpp" />
+    <ClCompile Include="Pieces\Pawn.cpp" />
+    <ClCompile Include="Pieces\Piece.cpp" />
+    <ClCompile Include="Pieces\Queen.cpp" />
+    <ClCompile Include="Pieces\Rook.cpp" />
     <ClCompile Include="printAI.cpp" />
-    <ClCompile Include="Queen.cpp" />
     <ClCompile Include="queenAI.cpp" />
-    <ClCompile Include="Rook.cpp" />
     <ClCompile Include="rookAI.cpp" />
     <ClCompile Include="SDL_Handler.cpp" />
     <ClCompile Include="treeAI.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bishop.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="King.h" />
-    <ClInclude Include="Knight.h" />
     <ClInclude Include="mainAI.h" />
     <ClInclude Include="MainLoop.h" />
     <ClInclude Include="Misc.h" />
-    <ClInclude Include="Pawn.h" />
-    <ClInclude Include="Piece.h" />
-    <ClInclude Include="Queen.h" />
-    <ClInclude Include="Rook.h" />
+    <ClInclude Include="Pieces\Bishop.h" />
+    <ClInclude Include="Pieces\King.h" />
+    <ClInclude Include="Pieces\Knight.h" />
+    <ClInclude Include="Pieces\Pawn.h" />
+    <ClInclude Include="Pieces\Piece.h" />
+    <ClInclude Include="Pieces\Queen.h" />
+    <ClInclude Include="Pieces\Rook.h" />
     <ClInclude Include="SDL_Handler.h" />
   </ItemGroup>
   <ItemGroup>
@@ -85,26 +85,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -182,13 +182,13 @@
       <ConformanceMode>true</ConformanceMode>
       <DisableSpecificWarnings>26812;6835</DisableSpecificWarnings>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)SDL\SDL\SDL2-2.26.5\include;$(ProjectDir)SDL\SDL_Image\SDL2_image-2.6.3\include;C:\Program Files %28x86%29\SDL2_image\include;C:\Program Files %28x86%29\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)SDL\SDL\SDL2-2.26.5\include;$(ProjectDir)SDL\SDL_Image\SDL2_image-2.6.3\include;C:\Program Files %28x86%29\SDL2_image\include;C:\Program Files %28x86%29\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)SDL\SDL\SDL2-2.26.5\lib\x64;$(ProjectDir)SDL\SDL_Image\SDL2_image-2.6.3\lib\x64;C:\Program Files %28x86%29\SDL2_image\lib;C:\Program Files %28x86%29\SDL2\lib\x64;%(AdditionalLibraryDirectories);$(ProjectDir)SDL;$(ProjectDir)SDL\SDL\SDL2-2.26.5\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib;$(ProjectDir)SDL\SDL\SDL2-2.26.5\lib\x64;$(ProjectDir)SDL\SDL_Image\SDL2_image-2.6.3\lib\x64;C:\Program Files %28x86%29\SDL2_image\lib;C:\Program Files %28x86%29\SDL2\lib\x64;%(AdditionalLibraryDirectories);$(ProjectDir)SDL;$(ProjectDir)SDL\SDL\SDL2-2.26.5\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -199,14 +199,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)SDL\SDL\SDL2-2.26.5\include;$(ProjectDir)SDL\SDL_Image\SDL2_image-2.6.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)SDL\SDL\SDL2-2.26.5\include;$(ProjectDir)SDL\SDL_Image\SDL2_image-2.6.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)SDL\SDL_Image\SDL2_image-2.6.3\lib\x64;$(ProjectDir)SDL\SDL\SDL2-2.26.5\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib;$(ProjectDir)SDL\SDL_Image\SDL2_image-2.6.3\lib\x64;$(ProjectDir)SDL\SDL\SDL2-2.26.5\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

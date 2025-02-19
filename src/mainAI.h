@@ -3,7 +3,7 @@
 #include <map>
 #include <algorithm>
 
-#include "Piece.h"
+#include "Pieces/Piece.h"
 using namespace std;
 
 #ifndef MAIN_H_INCLUDED
@@ -17,65 +17,69 @@ using namespace std;
 
 // ==================== NODE AND BOARD STRUCTURE TYPE ==============================
 struct tNode {
-    char board[12][12] = {
-        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-        {'x', 'x', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r', 'x', 'x'},
-        {'x', 'x', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'x', 'x'},
-        {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
-        {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
-        {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
-        {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
-        {'x', 'x', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'x', 'x'},
-        {'x', 'x', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R', 'x', 'x'},
-        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'}
-    };
+	char board[12][12] = {
+		{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+		{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+		{'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+		{'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+		{'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+		{'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+		{'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+		{'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+		{'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+		{'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+		{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+		{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'}
+	};
 
- /*   char boardBlack[12][12] = {
-        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-        {'x', 'x', 'r', 'n', 'b', 'k', 'q', 'b', 'n', 'r', 'x', 'x'},
-        {'x', 'x', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'x', 'x'},
-        {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
-        {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
-        {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
-        {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
-        {'x', 'x', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'x', 'x'},
-        {'x', 'x', 'R', 'N', 'B', 'K', 'Q', 'B', 'N', 'R', 'x', 'x'},
-        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-        {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'}
-    };*/
+	/*   char boardBlack[12][12] = {
+		   {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+		   {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+		   {'x', 'x', 'r', 'n', 'b', 'k', 'q', 'b', 'n', 'r', 'x', 'x'},
+		   {'x', 'x', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'x', 'x'},
+		   {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+		   {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+		   {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+		   {'x', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', 'x'},
+		   {'x', 'x', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'x', 'x'},
+		   {'x', 'x', 'R', 'N', 'B', 'K', 'Q', 'B', 'N', 'R', 'x', 'x'},
+		   {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+		   {'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'}
+	   };*/
 
-    map<char, int> materials;
+	map<char, int> materials;
 
-    // @param bool cur_side :: white=0 black=1
-    bool cur_side;
-    string b_king_pos;
-    string w_king_pos;
-    string mv;
+	// @param bool cur_side :: white=0 black=1
+	bool cur_side;
+	string b_king_pos;
+	string w_king_pos;
+	string mv;
 
-    vector<tNode*> next;
+	vector<tNode*> next;
 };
 typedef tNode* Node;
 
-class mainAI
-{
+class mainAI {
+
 public:
-    mainAI(Piece::Team playerTeam = Piece::Team::WHITE);
-    ~mainAI();
 
-    bool isBotThinking() { return botIsThinking; };
-    void GetUserInput(std::pair<std::string, MoveType>user_input);
-    string CalculateAIMove();
+	mainAI(Piece::Team playerTeam, std::vector<Piece*> pieces);
+	~mainAI();
+
+	bool isBotThinking() { return botIsThinking; };
+	void GetUserInput(std::pair<std::string, MoveType>user_input);
+	string CalculateAIMove();
+
 private:
-    void ChangeRootPos();
-    string ExtractMove();
-    bool isAIPlayingWhite = false;
-    bool botIsThinking = false;
 
-    Node root;
-    Node best;
+	void ChangeRootPos();
+	string ExtractMove();
+	bool isAIPlayingWhite = false;
+	bool botIsThinking = false;
+
+	Node root;
+	Node best;
+
 };
 
 // ==================== BASIC FUNCTIONALITY AND TREE OPERATIONS ====================
